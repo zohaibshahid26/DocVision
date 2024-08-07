@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Find-A-Doctor</string>
+    <string name="app_name">FInd a Doctor</string>
+    <string name="menu">Menu</string>
+    <string name="logo">Logo</string>
+    <string name="notification">Notification</string>
+    <string name="credit">Credit</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_profile">Profile</string>
+    <string name="nav_appointments">Appointments</string>
+    <string name="nav_medical_records">Medical Records</string>
+    <string name="nav_helpline">Helpline</string>
 </resources>
