@@ -2,10 +2,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity"
-    android:paddingHorizontal="@dimen/parent_padding_horizontal"
-    >
+    android:paddingHorizontal="@dimen/parent_padding_horizontal">
 
     <!-- Header with user info and location -->
     <LinearLayout
@@ -41,10 +40,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
+            android:textColor="@android:color/black"
+            android:textFontWeight="700"
             android:gravity="end"/>
     </LinearLayout>
-
-
 
     <!-- Search bar -->
     <EditText
@@ -57,9 +56,7 @@
         android:layout_below="@id/header"
         android:layout_marginTop="16dp"
         android:background="@drawable/rounded_border"
-        android:padding="12dp"
-/>
-
+        android:padding="12dp"/>
 
     <!-- Appointments -->
     <LinearLayout
@@ -68,7 +65,6 @@
         android:layout_height="wrap_content"
         android:background="@drawable/rounded_border_primary"
         android:orientation="horizontal"
-
         android:padding="16dp"
         android:layout_below="@id/search_bar"
         android:layout_marginTop="16dp">
@@ -81,105 +77,377 @@
             android:textSize="16sp" />
     </LinearLayout>
 
-    <!-- Services grid -->
-    <GridLayout
+
+    <TextView
+        android:id="@+id/textViewAppointmentsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How can we help you today?"
+        android:textSize="14sp"
+        android:textFontWeight="700"
+        android:paddingTop="24dp"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/appointments_section"
+        />
+
+
+    <!-- Services Grid -->
+    <LinearLayout
         android:id="@+id/services_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="2"
-
-        android:padding="16dp"
-        android:layout_below="@id/appointments_section"
+        android:orientation="vertical"
+        android:layout_below="@id/textViewAppointmentsLabel"
         android:layout_marginTop="16dp">
 
-        <!-- Video Consultation -->
+        <!-- First Row: 2x2 item, stacked 1x2 items vertically -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@drawable/bg_service">
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_video_consultation"/>
+            <!-- 2x2 item -->
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_service"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_video_consultation" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Video Consultation"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Container for vertical stacking of 1x2 items -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Video Consultation"
-                android:textSize="12sp"
-                />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp">
+
+                <!-- 1x2 item -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_service"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_clinic_visit" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="In-Clinic Visit"
+                        android:layout_marginTop="5dp"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- 1x2 item -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:background="@drawable/bg_service"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_clinic_visit" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Other Service"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
-        <!-- In-Clinic Visit -->
+        <!-- Second Row: 2x2 items -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_columnWeight="1"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@drawable/bg_service">
+            android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_clinic_visit"/>
+            <!-- 2x2 item -->
+            <LinearLayout
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/bg_service"
+                android:orientation="vertical"
+                android:padding="8dp">
 
-            <TextView
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_clinic_visit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="Another Service"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 2x2 item -->
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="In-Clinic Visit"
-                android:layout_marginTop="5dp"
-                android:textSize="12sp"
-                />
+                android:layout_weight="2"
+                android:background="@drawable/bg_service"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_clinic_visit" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="More Services"
+                    android:textSize="12sp" />
+            </LinearLayout>
         </LinearLayout>
 
-    </GridLayout>
+        <!-- Third Row: 1x1 items in a horizontal layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <!-- Symptoms -->
-    <LinearLayout
-        android:id="@+id/symptoms"
+            <!-- 1x1 item -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@drawable/bg_service"
+                android:layout_marginRight="8dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_clinic_visit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service 1"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- 1x1 item -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@drawable/bg_service"
+                android:layout_marginRight="8dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_clinic_visit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service 2"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- 1x1 item -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@drawable/bg_service"
+                android:layout_marginRight="8dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_clinic_visit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service 3"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <!-- 1x1 item -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:background="@drawable/bg_service">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_clinic_visit"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Service 4"
+                    android:layout_marginTop="5dp"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
         android:layout_below="@id/services_grid"
-        android:layout_marginTop="16dp">
+        android:id="@+id/symptoms_section"
+     >
 
+        <!-- Symptoms Label -->
         <TextView
+            android:id="@+id/textViewSymptomsLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Symptoms"/>
-    </LinearLayout>
+            android:text="Symptoms"
+            android:textSize="14sp"
+            android:textFontWeight="700"
+            android:paddingVertical="16dp"
+            android:textColor="@android:color/black" />
 
-    <!-- Diseases -->
-    <LinearLayout
-        android:id="@+id/diseases"
+        <!-- View All Button -->
+        <Button
+            android:id="@+id/buttonViewAll"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View all>"
+            android:textAllCaps="false"
+            android:background="@drawable/button_background"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:gravity="end|center_vertical"/>
+    </RelativeLayout>
+
+
+
+    <!-- Symptoms HorizontalScrollView -->
+    <HorizontalScrollView
+        android:id="@+id/symptoms_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_below="@id/symptoms"
-        android:layout_marginTop="16dp">
+        android:layout_below="@id/symptoms_section"
+        android:scrollbars="none"
+      >
 
+
+            <!-- LinearLayout for symptoms items -->
+            <LinearLayout
+                android:id="@+id/symptoms"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewSymptomsLabel"
+                android:orientation="horizontal">
+                <!-- Dynamic items will be added here -->
+            </LinearLayout>
+    </HorizontalScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/symptoms_scroll_view"
+        android:id="@+id/diseases_section"
+      >
+
+        <!-- Diseases Label -->
         <TextView
+            android:id="@+id/textViewDiseasesLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Diseases"/>
-    </LinearLayout>
+            android:text="Diseases"
+            android:textSize="14sp"
+            android:textFontWeight="700"
+            android:paddingVertical="16dp"
+            android:textColor="@android:color/black" />
 
+        <!-- View All Button -->
+        <Button
+            android:id="@+id/buttonViewAllDiseases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View all>"
+            android:textAllCaps="false"
+            android:background="@drawable/button_background"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="end|center_vertical"/>
+    </RelativeLayout>
+
+
+    <!-- HorizontalScrollView for diseases -->
+    <HorizontalScrollView
+        android:id="@+id/diseases_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/diseases_section"
+        android:scrollbars="none"
+     >
+
+            <!-- LinearLayout for diseases items -->
+            <LinearLayout
+                android:id="@+id/diseases"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewDiseasesLabel"
+                android:orientation="horizontal">
+                <!-- Dynamic items will be added here -->
+            </LinearLayout>
+
+    </HorizontalScrollView>
     <!-- Hospital and Doctors Section -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="16dp"
-        android:layout_below="@id/diseases"
+        android:layout_below="@id/diseases_scroll_view"
         android:layout_marginTop="16dp">
 
         <!-- Hospitals in Lahore -->
@@ -195,11 +463,5 @@
             android:text="Doctors in Lahore"/>
     </LinearLayout>
 
-    <!-- Include Footer Layout -->
-    <include
-        layout="@layout/footer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"/>
-
 </RelativeLayout>
+

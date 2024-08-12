@@ -1,3 +1,4 @@
+<!-- res/layout/activity_main.xml -->
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -17,11 +18,32 @@
         <include
             layout="@layout/header" />
 
+
+        <!-- Main Content -->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Include Main Layout -->
+                <include
+                    layout="@layout/layout" />
+                <!-- Other content here -->
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Include Footer Layout -->
         <include
-            layout="@layout/layout" />
-        <!-- Main Content Goes Here -->
-
-
+            layout="@layout/footer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <!-- Navigation Drawer -->
