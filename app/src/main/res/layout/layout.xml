@@ -28,6 +28,8 @@
             android:layout_height="wrap_content"
             android:text="Hello, Abdullah Malik"
             android:textSize="16sp"
+            android:textFontWeight="500"
+            android:textColor="@android:color/black"
             android:paddingStart="6dp" />
 
         <!-- TextView for country location -->
@@ -36,12 +38,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Lahore"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
             android:layout_weight="1"
             android:textColor="@android:color/black"
-            android:textFontWeight="700"
+            android:textFontWeight="500"
             android:gravity="end"/>
     </LinearLayout>
 
@@ -54,7 +56,7 @@
         android:textSize="20sp"
         android:drawableEnd="@drawable/ic_search"
         android:layout_below="@id/header"
-        android:layout_marginTop="16dp"
+
         android:background="@drawable/rounded_border"
         android:padding="12dp"/>
 
@@ -63,7 +65,7 @@
         android:id="@+id/appointments_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/rounded_border_primary"
+        android:background="@drawable/bg_service"
         android:orientation="horizontal"
         android:padding="16dp"
         android:layout_below="@id/search_bar"
@@ -73,7 +75,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Appointments"
-            android:textColor="@android:color/white"
+            android:textColor="@android:color/black"
+            android:textFontWeight="500"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -109,23 +112,27 @@
             <!-- 2x2 item -->
             <LinearLayout
                 android:layout_width="150dp"
-                android:layout_height="match_parent"
+                android:layout_height="150dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_service"
+                android:background="@drawable/rounded_gradient"
                 android:orientation="vertical"
                 android:padding="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_video_consultation" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Video Consultation"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dummy text here for additional details or information ."
+                    android:textSize="10sp"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
             <!-- Container for vertical stacking of 1x2 items -->
@@ -139,47 +146,52 @@
                 <!-- 1x2 item -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="75dp"
+
                     android:orientation="vertical"
                     android:padding="8dp"
-                    android:background="@drawable/bg_service"
+                    android:background="@drawable/gradient_1"
                     android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_clinic_visit" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="In-Clinic Visit"
-                        android:layout_marginTop="5dp"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Additional information or dummy text about in-clinic visits."
+                        android:textSize="10sp"
+                        android:textColor="@android:color/black" />
                 </LinearLayout>
 
                 <!-- 1x2 item -->
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
+                    android:layout_height="68dp"
                     android:orientation="vertical"
                     android:padding="8dp"
-                    android:background="@drawable/bg_service"
+                    android:background="@drawable/gradient_2"
                     android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_clinic_visit" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
                         android:text="Other Service"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        android:textColor="@android:color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="More dummy text or details about other services."
+                        android:textSize="10sp"
+                        android:textColor="@android:color/black" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
@@ -193,46 +205,52 @@
             <!-- 2x2 item -->
             <LinearLayout
                 android:layout_width="150dp"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
-                android:background="@drawable/bg_service"
+                android:background="@drawable/gradient_3"
                 android:orientation="vertical"
                 android:padding="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_clinic_visit" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:text="Another Service"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Dummy text for additional context."
+                    android:textSize="10sp"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
 
             <!-- 2x2 item -->
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="80dp"
                 android:layout_weight="2"
-                android:background="@drawable/bg_service"
+                android:background="@drawable/gradient_4"
                 android:orientation="vertical"
                 android:padding="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_clinic_visit" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
                     android:text="More Services"
-                    android:textSize="12sp" />
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detailed dummy text about more services offered. Example description here."
+                    android:textSize="10sp"
+                    android:textColor="@android:color/black" />
             </LinearLayout>
         </LinearLayout>
 
@@ -245,100 +263,189 @@
             <!-- 1x1 item -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:background="@drawable/bg_service"
+                android:background="@drawable/gradient_5"
                 android:layout_marginRight="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_clinic_visit"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Service 1"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+
             </LinearLayout>
 
             <!-- 1x1 item -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:background="@drawable/bg_service"
+                android:background="@drawable/gradient_6"
                 android:layout_marginRight="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_clinic_visit"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Service 2"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
+
             </LinearLayout>
 
             <!-- 1x1 item -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:background="@drawable/bg_service"
+                android:background="@drawable/gradient_7"
                 android:layout_marginRight="8dp">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_clinic_visit"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Service 3"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
             </LinearLayout>
 
             <!-- 1x1 item -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:background="@drawable/bg_service">
-
-                <ImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_clinic_visit"/>
+                android:background="@drawable/gradient_8">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Service 4"
-                    android:layout_marginTop="5dp"
-                    android:textSize="12sp"/>
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold" />
+
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 
+
+    <!-- Symptoms Label -->
+    <TextView
+        android:id="@+id/textViewPromotionLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Promotions"
+        android:textSize="14sp"
+        android:textFontWeight="700"
+        android:paddingTop="24dp"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/services_grid"/>
+
+    <RelativeLayout
+        android:id="@+id/promotion"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/textViewPromotionLabel">
+
+        <!-- HorizontalScrollView -->
+        <HorizontalScrollView
+            android:id="@+id/horizontal_scroll_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <LinearLayout
+                android:id="@+id/image_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+
+                >
+                <!-- Images will be added programmatically here -->
+            </LinearLayout>
+        </HorizontalScrollView>
+    </RelativeLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/message_1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:background="@drawable/rounded_gradient"
+        android:layout_marginVertical="24dp"
+        android:paddingTop="16dp"
+        android:layout_below="@id/promotion">
+
+        <!-- TextView with flexible width -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Get free medical consultation by asking a doctor"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:textColor="@android:color/black"
+            android:textFontWeight="700"
+
+     />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Ask a question anonymously"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:textColor="@android:color/black"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Get a reply from qualified doctors"
+            android:textSize="12sp"
+            android:padding="8dp"
+            android:textColor="@android:color/black"
+
+            />
+
+<!--        &lt;!&ndash; ImageView taking full height and aligned to the end &ndash;&gt;-->
+<!--        <ImageView-->
+<!--            android:layout_width="80dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:src="@drawable/man"-->
+<!--            android:layout_gravity="end"-->
+<!--            android:layout_marginStart="0dp"-->
+<!--            android:layout_marginEnd="0dp" /> &lt;!&ndash; Ensure no margin on end &ndash;&gt;-->
+    </LinearLayout>
+
+
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/services_grid"
+        android:layout_below="@id/message_1"
         android:id="@+id/symptoms_section"
      >
 
@@ -441,27 +548,190 @@
             </LinearLayout>
 
     </HorizontalScrollView>
-    <!-- Hospital and Doctors Section -->
-    <LinearLayout
-        android:layout_width="match_parent"
+
+
+    <TextView
+        android:id="@+id/textViewFollowUs"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:text="Follow Us"
+        android:textSize="14sp"
+        android:textFontWeight="700"
+        android:paddingTop="24dp"
+        android:textColor="@android:color/black"
         android:layout_below="@id/diseases_scroll_view"
-        android:layout_marginTop="16dp">
+        />
 
-        <!-- Hospitals in Lahore -->
-        <TextView
-            android:layout_width="wrap_content"
+        <!-- Social Media Section -->
+        <GridLayout
+            android:id="@+id/social_media_section"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Hospitals in Lahore"/>
+            android:columnCount="4"
+            android:rowCount="3"
+            android:layout_marginTop="16dp"
+            android:alignmentMode="alignMargins"
+            android:layout_gravity="center_horizontal"
+            android:layout_below="@id/textViewFollowUs"
+            android:layout_marginBottom="16dp">
 
-        <!-- Doctors in Lahore -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Doctors in Lahore"/>
-    </LinearLayout>
+            <!-- Social Media Logos -->
+            <ImageView
+                android:id="@+id/image_youtube"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:src="@drawable/ic_youtube"
+         />
 
-</RelativeLayout>
+            <ImageView
+                android:id="@+id/image_facebook"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:src="@drawable/ic_facebook"
+              />
+
+            <ImageView
+                android:id="@+id/image_instagram"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:src="@drawable/ic_instagram"
+            />
+
+            <ImageView
+                android:id="@+id/image_tiktok"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_row="0"
+                android:layout_column="3"
+                android:layout_margin="8dp"
+                android:layout_columnWeight="1"
+                android:src="@drawable/ic_tiktok"
+  />
+
+            <!-- Follower Counts -->
+            <TextView
+                android:id="@+id/text_youtube_followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="0"
+                android:text="1.2M"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:id="@+id/text_facebook_followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:text="850K"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:id="@+id/text_instagram_followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="2"
+                android:text="950K"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+                android:id="@+id/text_tiktok_followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="1"
+                android:layout_column="3"
+                android:text="1.1M"
+                android:textSize="14sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="4dp"
+                android:gravity="center"
+                android:layout_columnWeight="1"/>
+
+
+            <!-- Follower Counts -->
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="0"
+                android:text="Subscribers"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="1"
+                android:text="Followers"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="2"
+                android:text="Followers"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:layout_columnWeight="1"/>
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_row="2"
+                android:layout_column="3"
+                android:text="Followers"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:layout_margin="1dp"
+                android:gravity="center"
+                android:layout_columnWeight="1"/>
+
+
+        </GridLayout>
+    </RelativeLayout>
+
+
+
+
 
