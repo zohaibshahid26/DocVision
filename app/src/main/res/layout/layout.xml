@@ -56,7 +56,6 @@
         android:textSize="20sp"
         android:drawableEnd="@drawable/ic_search"
         android:layout_below="@id/header"
-
         android:background="@drawable/rounded_border"
         android:padding="12dp"/>
 
@@ -68,6 +67,8 @@
         android:background="@drawable/bg_service"
         android:orientation="horizontal"
         android:padding="16dp"
+
+        android:elevation="4dp"
         android:layout_below="@id/search_bar"
         android:layout_marginTop="16dp">
 
@@ -101,7 +102,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/textViewAppointmentsLabel"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        >
 
         <!-- First Row: 2x2 item, stacked 1x2 items vertically -->
         <LinearLayout
@@ -116,8 +118,10 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/rounded_gradient"
+
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:elevation="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -151,7 +155,8 @@
                     android:orientation="vertical"
                     android:padding="8dp"
                     android:background="@drawable/gradient_1"
-                    android:layout_marginBottom="8dp">
+                    android:layout_marginBottom="8dp"
+                    android:elevation="4dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -176,7 +181,8 @@
                     android:orientation="vertical"
                     android:padding="8dp"
                     android:background="@drawable/gradient_2"
-                    android:layout_marginBottom="8dp">
+                    android:layout_marginBottom="8dp"
+                    android:elevation="4dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -206,11 +212,12 @@
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="80dp"
-                android:layout_marginRight="8dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/gradient_3"
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:elevation="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -235,7 +242,8 @@
                 android:layout_weight="2"
                 android:background="@drawable/gradient_4"
                 android:orientation="vertical"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:elevation="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -258,17 +266,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            >
 
             <!-- 1x1 item -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
                 android:background="@drawable/gradient_5"
-                android:layout_marginRight="8dp">
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:elevation="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -284,12 +296,13 @@
             <!-- 1x1 item -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
                 android:background="@drawable/gradient_6"
-                android:layout_marginRight="8dp">
+                android:layout_marginRight="8dp"
+                android:elevation="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -305,12 +318,13 @@
             <!-- 1x1 item -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
                 android:background="@drawable/gradient_7"
-                android:layout_marginRight="8dp">
+                android:layout_marginRight="8dp"
+                android:elevation="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -325,11 +339,13 @@
             <!-- 1x1 item -->
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="70dp"
                 android:layout_weight="1"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:background="@drawable/gradient_8">
+                android:background="@drawable/gradient_8"
+
+                android:elevation="4dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -352,6 +368,7 @@
         android:text="Promotions"
         android:textSize="14sp"
         android:textFontWeight="700"
+
         android:paddingTop="24dp"
         android:textColor="@android:color/black"
         android:layout_below="@id/services_grid"/>
@@ -360,7 +377,8 @@
         android:id="@+id/promotion"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@id/textViewPromotionLabel">
+        android:layout_below="@id/textViewPromotionLabel"
+>
 
         <!-- HorizontalScrollView -->
         <HorizontalScrollView
@@ -392,7 +410,8 @@
         android:background="@drawable/rounded_gradient"
         android:layout_marginVertical="24dp"
         android:paddingTop="16dp"
-        android:layout_below="@id/promotion">
+        android:layout_below="@id/promotion"
+        android:elevation="4dp">
 
         <!-- TextView with flexible width -->
         <TextView
@@ -684,7 +703,7 @@
                 android:text="Subscribers"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
-                android:layout_margin="1dp"
+
                 android:gravity="center"
                 android:layout_columnWeight="1"/>
 
@@ -697,7 +716,7 @@
                 android:text="Followers"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
-                android:layout_margin="1dp"
+
                 android:gravity="center"
                 android:layout_columnWeight="1"/>
 
@@ -710,7 +729,7 @@
                 android:text="Followers"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
-                android:layout_margin="1dp"
+
                 android:gravity="center"
                 android:layout_columnWeight="1"/>
 
@@ -723,7 +742,7 @@
                 android:text="Followers"
                 android:textSize="12sp"
                 android:textColor="@android:color/black"
-                android:layout_margin="1dp"
+
                 android:gravity="center"
                 android:layout_columnWeight="1"/>
 

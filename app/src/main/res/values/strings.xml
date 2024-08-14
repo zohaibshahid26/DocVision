@@ -21,4 +21,8 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="medical_reports">Medical Records</string>
+    <string name="helpline">Helpline</string>
+    <string name="phone_number_1">0322-6291-630</string>
+    <string name="phone_number_2">042-3221-0000</string>
 </resources>

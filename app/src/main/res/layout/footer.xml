@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/activity_main.xml -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -8,51 +8,125 @@
     android:gravity="center">
 
     <!-- Home Button -->
-    <ImageButton
-        android:id="@+id/home_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_home"
-        android:contentDescription="@string/nav_home"
-
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:padding="16dp" />
+        android:gravity="center"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/home_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/home"
+            android:layout_gravity="center"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/nav_home" />
+
+        <TextView
+            android:id="@+id/home_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_home"
+            android:textColor="@android:color/black"
+
+            android:gravity="center"
+            android:textSize="10sp" />
+
+    </LinearLayout>
 
     <!-- Appointments Button -->
-    <ImageButton
-        android:id="@+id/appointments_button"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_appointments"
-        android:contentDescription="@string/nav_appointments"
-
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:padding="16dp" />
+        android:gravity="center"
+        android:padding="8dp">
 
-    <!-- Medical Records Button -->
-    <ImageButton
-        android:id="@+id/medical_records_button"
-        android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/appointments_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/appointment_book"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/nav_appointments" />
+
+        <TextView
+            android:id="@+id/appointments_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nav_appointments"
+            android:textColor="@android:color/black"
+
+            android:gravity="center"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_medical_records"
-        android:contentDescription="@string/nav_medical_records"
-
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:padding="16dp" />
+        android:gravity="center"
+        android:padding="8dp">
 
-    <!-- Helpline Button -->
-    <ImageButton
-        android:id="@+id/helpline_button"
-        android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/medical_reports_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/medical_reports"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/nav_appointments" />
+
+        <TextView
+            android:id="@+id/medical_reports_text"
+            android:layout_width="103dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/medical_reports"
+            android:textColor="@android:color/black"
+            android:textSize="10sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/helpline"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/ic_helpline"
-        android:contentDescription="@string/nav_helpline"
-
+        android:orientation="vertical"
         android:layout_weight="1"
-        android:padding="16dp" />
+        android:gravity="center"
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <ImageView
+            android:id="@+id/helpline_button"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/helpline"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/nav_appointments" />
+
+        <TextView
+            android:id="@+id/helpline_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/helpline"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- Additional Buttons -->
+    <!-- Repeat similar layout structure for other buttons like medical_records_button and helpline_button -->
 
 </LinearLayout>
