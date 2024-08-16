@@ -317,6 +317,7 @@
 
             <!-- 1x1 item -->
             <LinearLayout
+                android:id="@+id/btn_open_hospital"
                 android:layout_width="0dp"
                 android:layout_height="70dp"
                 android:layout_weight="1"

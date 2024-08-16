@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -50,8 +51,6 @@ class MainActivity : ComponentActivity() {
 
         // Get LayoutInflater to inflate the item layout
         val inflater = LayoutInflater.from(this)
-
-
 
 // Define the gap in pixels
         val gapInPixels = 16 // Or a fixed value
@@ -124,6 +123,13 @@ class MainActivity : ComponentActivity() {
 
         helpline_text.setOnClickListener {
             showHelplineDialog()
+        }
+
+        val btnOpenHospital: LinearLayout = findViewById(R.id.btn_open_hospital) // The button in your current layout
+        btnOpenHospital.setOnClickListener {
+            // Intent to start the new activity
+            val intent = Intent(this, HospitalActivity::class.java)
+            startActivity(intent)
         }
 
     }

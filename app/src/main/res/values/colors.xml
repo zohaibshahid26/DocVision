@@ -10,6 +10,7 @@
 <!--    <color name="colorAccent">#3F51B5</color>-->
 
         <color name="colorPrimary">#000000</color>
+        <color name="custom_gray">#C7C7C7</color>
         <color name="colorPrimaryDark">#3700B3</color>
     <color name="red_primary">#FF0000</color> <!-- Adjust the color code as needed -->
 </resources>
