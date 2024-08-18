@@ -5,10 +5,12 @@
     android:orientation="vertical"
     android:layout_margin="8dp"
     android:background="@drawable/rounded_border"
+
     android:paddingVertical="40dp"
     android:paddingHorizontal="80dp"
     android:elevation="2dp"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:gravity="center"> <!-- Center content within the LinearLayout -->
 
     <!-- Image at the top -->
     <ImageView
@@ -29,7 +31,8 @@
         android:textSize="16sp"
         android:textColor="@android:color/black"
         android:layout_marginTop="8dp"
-        android:text="Hospital Name"/>
+        android:text="Hospital Name"
+        android:gravity="center"/> <!-- Center the text -->
 
     <!-- Number of Available Doctors -->
     <TextView
@@ -39,7 +42,8 @@
         android:textSize="14sp"
         android:textColor="@android:color/darker_gray"
         android:layout_marginTop="4dp"
-        android:text="Doctors: 10"/>
+        android:text="Doctors: 10"
+        android:gravity="center"/> <!-- Center the text -->
 
     <!-- Location -->
     <TextView
@@ -49,5 +53,6 @@
         android:textSize="12sp"
         android:textColor="@android:color/darker_gray"
         android:layout_marginTop="4dp"
-        android:text="Location"/>
+        android:text="Location"
+        android:gravity="center"/> <!-- Center the text -->
 </LinearLayout>

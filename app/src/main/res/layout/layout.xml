@@ -1,8 +1,8 @@
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:paddingHorizontal="@dimen/parent_padding_horizontal">
 
@@ -40,7 +40,7 @@
             android:text="Lahore"
             android:textSize="14sp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="4dp"
             android:layout_weight="1"
             android:textColor="@android:color/black"
             android:textFontWeight="500"
@@ -66,19 +66,27 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_service"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="8dp"
 
         android:elevation="4dp"
         android:layout_below="@id/search_bar"
         android:layout_marginTop="16dp">
+
+        <ImageView
+            android:id="@+id/appointments_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/appointment_book"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="My Appointments"
             android:textColor="@android:color/black"
-            android:textFontWeight="500"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:layout_gravity="center"/>
     </LinearLayout>
 
 
@@ -261,104 +269,169 @@
                     android:textColor="@android:color/black" />
             </LinearLayout>
         </LinearLayout>
-
-        <!-- Third Row: 1x1 items in a horizontal layout -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp"
-            >
-
-            <!-- 1x1 item -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="8dp"
-                android:background="@drawable/gradient_5"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:elevation="4dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Service 1"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <!-- 1x1 item -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="8dp"
-                android:background="@drawable/gradient_6"
-                android:layout_marginRight="8dp"
-                android:elevation="4dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Service 2"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-            <!-- 1x1 item -->
-            <LinearLayout
-                android:id="@+id/btn_open_hospital"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="8dp"
-                android:background="@drawable/gradient_7"
-                android:layout_marginRight="8dp"
-                android:elevation="4dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Service 3"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <!-- 1x1 item -->
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:padding="8dp"
-                android:background="@drawable/gradient_8"
-
-                android:elevation="4dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Service 4"
-                    android:textSize="12sp"
-                    android:textColor="@android:color/black"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-        </LinearLayout>
     </LinearLayout>
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/card_services_grid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:columnCount="4"
+        app:rowCount="1"
+        android:layout_below="@id/services_grid"
+        >
+
+        <!-- Card 1 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_open_hospital_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/hospital_image_1"
+                    android:layout_width="47dp"
+                    android:layout_height="38dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/star" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Favourites"
+                    android:textSize="12sp"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card 2 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_open_hospital_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/hospital_image_2"
+                    android:layout_width="49dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/male_doctor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Doctors"
+                    android:layout_marginTop="4dp"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card 3 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_open_hospital"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/hospital_image_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/hospital" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hospitals"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Card 4 -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/btn_open_hospital_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:layout_rowWeight="1"
+            app:layout_columnWeight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <ImageView
+                    android:id="@+id/hospital_image_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/blog" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Blogs"
+                    android:textSize="12sp"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:layout_gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </androidx.gridlayout.widget.GridLayout>
 
 
     <!-- Symptoms Label -->
@@ -372,7 +445,7 @@
 
         android:paddingTop="24dp"
         android:textColor="@android:color/black"
-        android:layout_below="@id/services_grid"/>
+        android:layout_below="@id/card_services_grid"/>
 
     <RelativeLayout
         android:id="@+id/promotion"
@@ -449,14 +522,6 @@
 
             />
 
-<!--        &lt;!&ndash; ImageView taking full height and aligned to the end &ndash;&gt;-->
-<!--        <ImageView-->
-<!--            android:layout_width="80dp"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:src="@drawable/man"-->
-<!--            android:layout_gravity="end"-->
-<!--            android:layout_marginStart="0dp"-->
-<!--            android:layout_marginEnd="0dp" /> &lt;!&ndash; Ensure no margin on end &ndash;&gt;-->
     </LinearLayout>
 
 

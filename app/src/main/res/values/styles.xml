@@ -17,4 +17,15 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@drawable/rounded_border</item>
     </style>
+
+    <!-- Custom SearchView Style -->
+    <style name="CustomSearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:queryBackground">@android:color/transparent</item>
+        <item name="android:submitBackground">@android:color/transparent</item>
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
 </resources>

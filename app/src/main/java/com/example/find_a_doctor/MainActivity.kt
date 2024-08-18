@@ -8,13 +8,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ListView
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.ComponentActivity
+import androidx.cardview.widget.CardView
 
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -24,6 +27,8 @@ import java.sql.Array
 @Suppress("DEPRECATION")
 class MainActivity : ComponentActivity() {
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var progressBar: ProgressBar
+    private lateinit var overlay: View
 
     private fun dpToPx(dp: Int): Int {
         val density = resources.displayMetrics.density
@@ -36,6 +41,8 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.activity_main)
 
         drawerLayout = findViewById(R.id.drawer_layout)
+        progressBar = findViewById(R.id.progress_bar)
+        overlay = findViewById(R.id.overlay)
 
 
         val menuButton: ImageButton = findViewById(R.id.menu_button)
@@ -125,11 +132,23 @@ class MainActivity : ComponentActivity() {
             showHelplineDialog()
         }
 
-        val btnOpenHospital: LinearLayout = findViewById(R.id.btn_open_hospital) // The button in your current layout
+        val btnOpenHospital: CardView = findViewById(R.id.btn_open_hospital) // The button in your current layout
         btnOpenHospital.setOnClickListener {
-            // Intent to start the new activity
+            // Show the ProgressBar and overlay
+            overlay.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
+
+            // Start the new activity
             val intent = Intent(this, HospitalActivity::class.java)
+            intent.putExtra("TITLE", "All Hospitals") // or "Labs", based on your case
             startActivity(intent)
+
+            // Hide the ProgressBar and overlay after a short delay
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+                overlay.visibility = View.GONE
+
+            }, 1500) // Adjust the delay as necessary
         }
 
     }

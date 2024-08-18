@@ -1,12 +1,17 @@
+package com.example.find_a_doctor
+
+import Hospital
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.find_a_doctor.R
 
-class HospitalAdapter(private val context: Context, private val hospitals: List<Hospital>) : RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>() {
+class HospitalAdapter(private val context: Context, private var hospitals: List<Hospital>) : RecyclerView.Adapter<HospitalAdapter.HospitalViewHolder>() {
 
     // ViewHolder class to hold the views for each item
     class HospitalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -14,10 +19,7 @@ class HospitalAdapter(private val context: Context, private val hospitals: List<
         val hospitalLocationTextView: TextView = view.findViewById(R.id.hospital_address)
         val openingHoursTextView: TextView = view.findViewById(R.id.opening_hours_time)
         val availableDoctorsTextView: TextView = view.findViewById(R.id.available_doctors_count)
-
-        // Optionally, you can define buttons here if needed
-        // val callHelplineButton: Button = view.findViewById(R.id.btn_call_helpline)
-        // val viewProfileButton: Button = view.findViewById(R.id.btn_view_profile)
+        val viewProfileButton: Button = view.findViewById(R.id.btn_view_profile) // Reference to the View Profile button
     }
 
     // Create new views (invoked by the layout manager)
@@ -34,13 +36,22 @@ class HospitalAdapter(private val context: Context, private val hospitals: List<
         holder.openingHoursTextView.text = hospital.openingHours
         holder.availableDoctorsTextView.text = hospital.availableDoctors.toString()
 
-        // Optionally set up buttons with click listeners here
-        // holder.callHelplineButton.setOnClickListener { /* Handle click */ }
-        // holder.viewProfileButton.setOnClickListener { /* Handle click */ }
+        // Set up the View Profile button click listener
+        holder.viewProfileButton.setOnClickListener {
+            // Start the Profile Activity and pass the hospital's ID or other necessary data
+            val intent = Intent(context, HospitalProfileActivity::class.java)
+            intent.putExtra("HOSPITAL_ID", hospital.id) // Assuming Hospital has an id field
+            context.startActivity(intent)
+        }
     }
 
     // Return the size of the dataset (invoked by the layout manager)
     override fun getItemCount(): Int {
         return hospitals.size
+    }
+
+    fun updateData(newHospitals: List<Hospital>) {
+        hospitals = newHospitals
+        notifyDataSetChanged() // Notify the adapter to refresh the list
     }
 }

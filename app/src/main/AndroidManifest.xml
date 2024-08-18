@@ -11,14 +11,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         tools:targetApi="31">
-
-
+        <activity
+            android:name=".HospitalProfileActivity"
+            android:theme="@style/Theme.FindADoctor.NoActionBar"
+            android:exported="false" />
+        <activity
+            android:name=".BaseActivity"
+            android:exported="false" />
         <activity
             android:name=".HospitalActivity"
-            android:theme="@style/Theme.FindADoctor.NoActionBar">
-
-        </activity>
-
+            android:theme="@style/Theme.FindADoctor.NoActionBar" />
         <activity
             android:name=".MainActivity"
             android:exported="true"

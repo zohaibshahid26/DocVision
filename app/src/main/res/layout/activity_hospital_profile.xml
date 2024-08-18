@@ -1,0 +1,185 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+
+    <!-- Hospital Icon -->
+    <ImageView
+        android:id="@+id/hospitalImage"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginEnd="20dp"
+
+        android:src="@drawable/hospital"
+        android:scaleType="fitCenter"
+        android:background="@drawable/circle_background_gradient"
+
+        android:padding="8dp"
+        android:layout_gravity="center_vertical"
+        android:layout_alignParentTop="true"
+        />
+
+
+
+    <!-- Hospital Name -->
+    <TextView
+        android:id="@+id/hospitalName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/hospitalImage"
+        android:layout_alignParentTop="true"
+        android:text="Aadil Hospital"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <!-- Rating -->
+
+    <RatingBar
+        android:id="@+id/hospitalRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hospitalName"
+        android:layout_gravity="start"
+        android:layout_marginStart="-63dp"
+        android:layout_marginTop="-15dp"
+        android:layout_toEndOf="@id/hospitalImage"
+        android:isIndicator="true"
+
+        android:numStars="5"
+        android:rating="4.5"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        android:stepSize="0.5" />
+
+    <TextView
+        android:id="@+id/hospital_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hospitalRating"
+        android:layout_toEndOf="@id/hospitalImage"
+        android:text="Main Boulevard DHA"
+        android:layout_marginTop="-15dp" />
+
+
+    <LinearLayout
+        android:id="@+id/hospital_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/hospital_address"
+        android:layout_marginVertical="20dp">
+
+        <!-- Opening Hours and Available Doctors -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginRight="24dp">
+
+            <TextView
+                android:id="@+id/opening_hours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Opening Hours"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/opening_hours_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="24 Hours"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/available_doctors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="Available Doctors"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/available_doctors_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="121"
+                android:textColor="@android:color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/aboutLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="16dp"
+        android:text="About"
+        android:layout_below="@id/hospital_info"
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
+
+    <!-- About Section -->
+    <TextView
+        android:id="@+id/aboutHospital"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/aboutLabel"
+        android:layout_marginTop="8dp"
+        android:text="Aadil Hospital Lahore was founded in 1987 as an initiative of Abdul Waheed Trust and is associated with Avicenna Medical College. It is a privately run tertiary hospital..."
+        android:textColor="@android:color/black"
+        android:ellipsize="end"
+        android:maxLines="3" />
+
+    <!-- Call Helpline Button -->
+    <Button
+        android:id="@+id/btnCallHelpline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Call Helpline"
+        android:backgroundTint="@android:color/holo_red_light"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/aboutHospital"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_border"
+        android:padding="12dp"
+        android:layout_marginEnd="8dp" />
+
+    <!-- Get Map Directions Button -->
+    <Button
+        android:id="@+id/btnMapDirections"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/white"
+        android:background="@drawable/rounded_border"
+        android:text="Call Helpline"
+        android:textColor="@android:color/holo_red_light"
+        android:layout_below="@id/aboutHospital"
+        android:layout_toEndOf="@id/btnCallHelpline"
+        android:layout_marginTop="16dp" />
+
+    <include
+        layout="@layout/horizontal_line" />
+
+</RelativeLayout>
