@@ -3,9 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     tools:context=".MainActivity">
 
+    <RelativeLayout
+        android:id="@+id/hospital_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:elevation="2dp"
+        android:background="@android:color/white">
 
     <!-- Hospital Icon -->
     <ImageView
@@ -23,8 +29,6 @@
         android:layout_gravity="center_vertical"
         android:layout_alignParentTop="true"
         />
-
-
 
     <!-- Hospital Name -->
     <TextView
@@ -173,13 +177,26 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@android:color/white"
         android:background="@drawable/rounded_border"
-        android:text="Call Helpline"
+        android:text="Get Map Directions"
         android:textColor="@android:color/holo_red_light"
         android:layout_below="@id/aboutHospital"
         android:layout_toEndOf="@id/btnCallHelpline"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
 
-    <include
-        layout="@layout/horizontal_line" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/DoctorsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginTop="20dp"
+        android:paddingStart="16dp"
+        android:text="Hospital's Doctors"
+        android:layout_below="@id/hospital_profile"
+
+        android:textColor="@android:color/black"
+        android:textSize="20sp" />
 
 </RelativeLayout>

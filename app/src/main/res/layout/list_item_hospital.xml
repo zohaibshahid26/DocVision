@@ -17,6 +17,12 @@
         android:gravity="center_vertical"
         >
 
+        <TextView
+            android:id="@+id/hospital_id"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
         <!-- Hospital Icon -->
         <ImageView
             android:id="@+id/hospital_icon"
@@ -132,6 +138,9 @@
         android:background="@drawable/rounded_border"
         android:text="Call Helpline"
         android:textColor="@android:color/holo_red_light" />
+
+
+
 
     <!-- View Profile Button -->
     <Button

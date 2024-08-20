@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -82,6 +83,11 @@ abstract class BaseActivity : AppCompatActivity() {
         callLayout2.setOnClickListener {
             val phoneNumber2 = number2TextView.text.toString()
             makePhoneCall(phoneNumber2)
+        }
+
+        val closeButton: ImageView = dialog.findViewById(R.id.close_button)
+        closeButton.setOnClickListener {
+            dialog.dismiss() // Close the dialog
         }
     }
 

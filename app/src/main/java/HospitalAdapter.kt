@@ -15,6 +15,7 @@ class HospitalAdapter(private val context: Context, private var hospitals: List<
 
     // ViewHolder class to hold the views for each item
     class HospitalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val HospitalIdTextView: TextView = view.findViewById(R.id.hospital_id)
         val hospitalNameTextView: TextView = view.findViewById(R.id.hospital_name)
         val hospitalLocationTextView: TextView = view.findViewById(R.id.hospital_address)
         val openingHoursTextView: TextView = view.findViewById(R.id.opening_hours_time)
@@ -31,6 +32,7 @@ class HospitalAdapter(private val context: Context, private var hospitals: List<
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: HospitalViewHolder, position: Int) {
         val hospital = hospitals[position]
+        holder.HospitalIdTextView.text = hospital.id.toString()
         holder.hospitalNameTextView.text = hospital.name
         holder.hospitalLocationTextView.text = hospital.location
         holder.openingHoursTextView.text = hospital.openingHours
@@ -40,7 +42,7 @@ class HospitalAdapter(private val context: Context, private var hospitals: List<
         holder.viewProfileButton.setOnClickListener {
             // Start the Profile Activity and pass the hospital's ID or other necessary data
             val intent = Intent(context, HospitalProfileActivity::class.java)
-            intent.putExtra("HOSPITAL_ID", hospital.id) // Assuming Hospital has an id field
+            intent.putExtra("hospitalId", hospital.id) // Assuming Hospital has an id field
             context.startActivity(intent)
         }
     }

@@ -54,15 +54,17 @@ class HospitalProfileActivity : BaseActivity() {
         Log.d("HospitalProfileActivity", "Map directions button initialized")
 
         // Get the hospital ID from the intent
-        val hospitalId = intent.getStringExtra("HOSPITAL_ID")
+        val hospitalId = intent.getIntExtra("hospitalId", -1) // -1 or any default value
 
         // Fetch hospital details using the ID and update the UI
         fetchHospitalDetails(hospitalId)
     }
 
-    private fun fetchHospitalDetails(hospitalId: String?) {
+    private fun fetchHospitalDetails(hospitalId: Int?) {
         // Simulate fetching hospital details from a data source
         if (hospitalId != null) {
+
+            Log.d("Fetching hospital details for ID: $hospitalId", "Fetching hospital details")
             // Example of hardcoded data, replace this with actual data retrieval logic
             val hospital = getHospitalById(hospitalId)
 
@@ -78,7 +80,7 @@ class HospitalProfileActivity : BaseActivity() {
         }
     }
 
-    private fun getHospitalById(hospitalId: String): Hospital {
+    private fun getHospitalById(hospitalId: Int): Hospital {
         // Replace this with your actual data retrieval logic
         // For demonstration, returning a dummy hospital
         return Hospital(

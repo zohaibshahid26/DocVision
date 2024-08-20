@@ -1,89 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@drawable/rounded_border"
-    android:padding="30dp"
+    android:layout_height="wrap_content">
 
-    android:gravity="center"
-    android:layout_gravity="center_vertical">
-
-    <!-- Top Image -->
-    <ImageView
-        android:id="@+id/dialog_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/cro"
-        android:layout_marginBottom="16dp" />
-
-    <!-- First Call Logo and Number -->
+    <!-- Existing content layout -->
     <LinearLayout
-        android:id="@+id/call_layout_1"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="10dp"
-        android:background="@drawable/rounded_gradient"
-
-        android:layout_marginBottom="16dp">
-
-        <ImageView
-            android:id="@+id/call_logo_1"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/telephone" />
-
-        <TextView
-            android:id="@+id/number_1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/phone_number_1"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/call_layout_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="10dp"
-        android:background="@drawable/rounded_gradient"
-
-        android:layout_marginBottom="16dp">
-
-        <ImageView
-            android:id="@+id/call_logo_2"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="8dp"
-            android:src="@drawable/telephone" />
-
-        <TextView
-            android:id="@+id/number_2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/phone_number_2"
-            android:textColor="@android:color/black"
-            android:textSize="18sp" />
-    </LinearLayout>
-
-    <!-- Text Line -->
-    <TextView
-        android:id="@+id/dialog_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:background="@drawable/rounded_border"
+        android:padding="30dp"
         android:gravity="center"
-        android:textStyle="italic"
-        android:text="Available 24/7 for your convenience"
-        android:textColor="@android:color/black"
-        android:textSize="14sp" />
-</LinearLayout>
+        android:layout_gravity="center_vertical">
+
+        <!-- Top Image -->
+        <ImageView
+            android:id="@+id/dialog_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cro"
+            android:layout_marginBottom="16dp" />
+
+        <!-- First Call Logo and Number -->
+        <LinearLayout
+            android:id="@+id/call_layout_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/rounded_gradient"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/call_logo_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/telephone" />
+
+            <TextView
+                android:id="@+id/number_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number_1"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/call_layout_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="10dp"
+            android:background="@drawable/rounded_gradient"
+            android:layout_marginBottom="16dp">
+
+            <ImageView
+                android:id="@+id/call_logo_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/telephone" />
+
+            <TextView
+                android:id="@+id/number_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/phone_number_2"
+                android:textColor="@android:color/black"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <!-- Text Line -->
+        <TextView
+            android:id="@+id/dialog_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:textStyle="italic"
+            android:text="Available 24/7 for your convenience"
+            android:textColor="@android:color/black"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <!-- Close Button -->
+    <ImageView
+        android:id="@+id/close_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="16dp"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</FrameLayout>
