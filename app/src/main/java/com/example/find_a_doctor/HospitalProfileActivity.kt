@@ -1,5 +1,6 @@
 package com.example.find_a_doctor
 
+import Doctor
 import Hospital
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlin.random.Random
 
 class HospitalProfileActivity : BaseActivity() {
 
@@ -58,6 +62,15 @@ class HospitalProfileActivity : BaseActivity() {
 
         // Fetch hospital details using the ID and update the UI
         fetchHospitalDetails(hospitalId)
+
+        // Generate random doctors for the hospital
+        val randomDoctors = generateRandomDoctors()
+
+        // Set up the RecyclerView and adapter for doctors
+        val doctorsRecyclerView: RecyclerView = findViewById(R.id.doctor_list)
+        val doctorsAdapter = DoctorAdapter(this, randomDoctors)
+        doctorsRecyclerView.layoutManager = LinearLayoutManager(this)
+        doctorsRecyclerView.adapter = doctorsAdapter
     }
 
     private fun fetchHospitalDetails(hospitalId: Int?) {
@@ -92,6 +105,47 @@ class HospitalProfileActivity : BaseActivity() {
 
         )
     }
+
+
+    private fun generateRandomDoctors(): List<Doctor> {
+        return List(20) { index ->
+            Doctor(
+                id = index + 1,
+                hospitalId = Random.nextInt(100, 200),
+                image = when (Random.nextInt(1, 6)) {
+                    1 -> R.drawable.doctor
+                    2 -> R.drawable.doctor
+                    3 -> R.drawable.doctor
+                    4 -> R.drawable.doctor
+                    5 -> R.drawable.doctor
+                    else -> R.drawable.doctor
+                },
+                name = listOf(
+                    "Dr. John Smith", "Dr. Emily Johnson", "Dr. Michael Brown", "Dr. Sarah Davis",
+                    "Dr. William Wilson", "Dr. Olivia Martinez", "Dr. James Taylor", "Dr. Ava White",
+                    "Dr. Benjamin Harris", "Dr. Mia Clark", "Dr. Noah Lewis", "Dr. Isabella Young",
+                    "Dr. Lucas Walker", "Dr. Sophia Robinson", "Dr. Ethan King", "Dr. Charlotte Hall",
+                    "Dr. Alexander Scott", "Dr. Amelia Adams", "Dr. Mason Nelson", "Dr. Harper Carter"
+                )[Random.nextInt(20)],
+                specialization = listOf(
+                    "Cardiologist", "Neurologist", "Orthopedic Surgeon", "Pediatrician", "Gynecologist",
+                    "Oncologist", "Dermatologist", "Pulmonologist", "Rheumatologist", "Urologist"
+                )[Random.nextInt(10)],
+                qualification = listOf(
+                    "MBBS, MD", "MBBS, DM", "MBBS, MS", "MBBS, DCH", "MBBS, FRCS",
+                    "MBBS, MCh", "MBBS, MRCP", "MBBS, MRCS", "MBBS, M.D.", "MBBS, DNB"
+                )[Random.nextInt(10)],
+                experience = "${Random.nextInt(1, 30)} years",
+                reviews = String.format("%.2f / 5", Random.nextFloat() * 5),
+            about = "Experienced in ${listOf(
+                    "Cardiology", "Neurology", "Orthopedic Surgery", "Pediatrics", "Gynecology",
+                    "Oncology", "Dermatology", "Pulmonology", "Rheumatology", "Urology"
+                )[Random.nextInt(10)]}.",
+                availabilityId = Random.nextInt(1, 5)
+            )
+        }
+    }
+
 
     override fun customizeHeader() {
         // Customize header for HospitalProfileActivity if needed

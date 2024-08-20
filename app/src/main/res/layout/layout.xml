@@ -13,13 +13,15 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingVertical="16dp"
-        android:gravity="center_vertical"
+
+        android:gravity="center_horizontal"
         android:layout_alignParentTop="true">
 
         <ImageView
             android:id="@+id/user_avatar"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
             android:src="@drawable/ic_avatar"/>
 
         <TextView
@@ -27,57 +29,59 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Hello, Abdullah Malik"
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:textFontWeight="500"
+            android:layout_gravity="center_vertical"
             android:textColor="@android:color/black"
             android:paddingStart="6dp" />
 
-        <!-- TextView for country location -->
-        <TextView
-            android:id="@+id/location_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Lahore"
-            android:textSize="14sp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="4dp"
-            android:layout_weight="1"
-            android:textColor="@android:color/black"
-            android:textFontWeight="500"
-            android:gravity="end"/>
+<!--        &lt;!&ndash; TextView for country location &ndash;&gt;-->
+<!--        <TextView-->
+<!--            android:id="@+id/location_text"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Lahore"-->
+<!--            android:textSize="18sp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginEnd="4dp"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textFontWeight="500"-->
+<!--            android:gravity="end"/>-->
     </LinearLayout>
 
-    <!-- Search bar -->
-    <EditText
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Search by Doctors"
-        android:textSize="20sp"
-        android:drawableEnd="@drawable/ic_search"
-        android:layout_below="@id/header"
-        android:background="@drawable/rounded_border"
-        android:padding="12dp"/>
+<!--    &lt;!&ndash; Search bar &ndash;&gt;-->
+<!--    <EditText-->
+<!--        android:id="@+id/search_bar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:hint="Search by Doctors"-->
+<!--        android:textSize="20sp"-->
+<!--        android:drawableEnd="@drawable/ic_search"-->
+<!--        android:layout_below="@id/header"-->
+<!--        android:background="@drawable/rounded_border"-->
+<!--        android:padding="12dp"/>-->
 
     <!-- Appointments -->
     <LinearLayout
         android:id="@+id/appointments_section"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_service"
+        android:backgroundTint="#f1f1f1f1"
+        android:background="@drawable/rounded_border"
         android:orientation="horizontal"
         android:padding="8dp"
 
         android:elevation="4dp"
-        android:layout_below="@id/search_bar"
-        android:layout_marginTop="16dp">
+        android:layout_below="@id/header"
+        android:layout_marginTop="8dp">
 
         <ImageView
             android:id="@+id/appointments_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/appointment_book"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
             android:layout_gravity="center"/>
 
         <TextView
@@ -95,8 +99,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How can we help you today?"
-        android:textSize="14sp"
-        android:textFontWeight="700"
+        android:textSize="18sp"
+     android:textStyle="bold"
         android:paddingTop="24dp"
         android:textColor="@android:color/black"
         android:layout_below="@id/appointments_section"
@@ -124,7 +128,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="12dp"
                 android:background="@drawable/rounded_gradient"
 
                 android:orientation="vertical"
@@ -135,7 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Video Consultation"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
@@ -170,7 +174,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="In-Clinic Visit"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
 
@@ -196,7 +200,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Other Service"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         android:textColor="@android:color/black"
                         android:textStyle="bold" />
 
@@ -231,7 +235,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Another Service"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
@@ -257,7 +261,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="More Services"
-                    android:textSize="12sp"
+                    android:textSize="16sp"
                     android:textColor="@android:color/black"
                     android:textStyle="bold" />
 
@@ -314,14 +318,14 @@
                     android:textSize="12sp"
                     android:layout_marginTop="5dp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
+
                     android:layout_gravity="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
         <!-- Card 2 -->
         <androidx.cardview.widget.CardView
-            android:id="@+id/btn_open_hospital_2"
+            android:id="@+id/btn_open_doctor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -352,7 +356,7 @@
                     android:layout_marginTop="4dp"
                     android:textSize="12sp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
+
                     android:layout_gravity="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -389,7 +393,7 @@
                     android:text="Hospitals"
                     android:textSize="12sp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
+
                     android:layout_gravity="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -426,7 +430,7 @@
                     android:text="Blogs"
                     android:textSize="12sp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
+
                     android:layout_gravity="center" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -434,18 +438,73 @@
     </androidx.gridlayout.widget.GridLayout>
 
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/card_services_grid"
+        android:id="@+id/diseases_section"
+        >
+
+        <!-- Diseases Label -->
+        <TextView
+            android:id="@+id/textViewDiseasesLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diseases"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:paddingVertical="12dp"
+            android:textColor="@android:color/black" />
+
+        <!-- View All Button -->
+        <Button
+            android:id="@+id/buttonViewAllDiseases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="View all>"
+            android:textAllCaps="false"
+            android:background="@drawable/button_background"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="end|center_vertical"/>
+    </RelativeLayout>
+
+
+    <!-- HorizontalScrollView for diseases -->
+    <HorizontalScrollView
+        android:id="@+id/diseases_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/diseases_section"
+        android:scrollbars="none"
+        >
+
+        <!-- LinearLayout for diseases items -->
+        <LinearLayout
+            android:id="@+id/diseases"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewDiseasesLabel"
+            android:orientation="horizontal">
+            <!-- Dynamic items will be added here -->
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
     <!-- Symptoms Label -->
     <TextView
         android:id="@+id/textViewPromotionLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Promotions"
-        android:textSize="14sp"
-        android:textFontWeight="700"
+        android:textSize="18sp"
+        android:textStyle="bold"
+
 
         android:paddingTop="24dp"
         android:textColor="@android:color/black"
-        android:layout_below="@id/card_services_grid"/>
+        android:layout_below="@id/diseases_scroll_view"/>
 
     <RelativeLayout
         android:id="@+id/promotion"
@@ -492,11 +551,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Get free medical consultation by asking a doctor"
-            android:textSize="14sp"
+            android:text="Get free medical consultation today!"
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:padding="8dp"
-            android:textColor="@android:color/black"
-            android:textFontWeight="700"
+
+
 
      />
 
@@ -505,7 +565,7 @@
             android:layout_height="wrap_content"
 
             android:text="Ask a question anonymously"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:padding="8dp"
             android:textColor="@android:color/black"
 
@@ -516,7 +576,7 @@
             android:layout_height="wrap_content"
 
             android:text="Get a reply from qualified doctors"
-            android:textSize="12sp"
+            android:textSize="15sp"
             android:padding="8dp"
             android:textColor="@android:color/black"
 
@@ -540,8 +600,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Symptoms"
-            android:textSize="14sp"
-            android:textFontWeight="700"
+            android:textSize="18sp"
+           android:textStyle="bold"
             android:paddingVertical="16dp"
             android:textColor="@android:color/black" />
 
@@ -581,70 +641,18 @@
             </LinearLayout>
     </HorizontalScrollView>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/symptoms_scroll_view"
-        android:id="@+id/diseases_section"
-      >
-
-        <!-- Diseases Label -->
-        <TextView
-            android:id="@+id/textViewDiseasesLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Diseases"
-            android:textSize="14sp"
-            android:textFontWeight="700"
-            android:paddingVertical="16dp"
-            android:textColor="@android:color/black" />
-
-        <!-- View All Button -->
-        <Button
-            android:id="@+id/buttonViewAllDiseases"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="View all>"
-            android:textAllCaps="false"
-            android:background="@drawable/button_background"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:gravity="end|center_vertical"/>
-    </RelativeLayout>
-
-
-    <!-- HorizontalScrollView for diseases -->
-    <HorizontalScrollView
-        android:id="@+id/diseases_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/diseases_section"
-        android:scrollbars="none"
-     >
-
-            <!-- LinearLayout for diseases items -->
-            <LinearLayout
-                android:id="@+id/diseases"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/textViewDiseasesLabel"
-                android:orientation="horizontal">
-                <!-- Dynamic items will be added here -->
-            </LinearLayout>
-
-    </HorizontalScrollView>
-
 
     <TextView
         android:id="@+id/textViewFollowUs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Follow Us"
-        android:textSize="14sp"
-        android:textFontWeight="700"
+        android:textSize="18sp"
+        android:textStyle="bold"
+
         android:paddingTop="24dp"
         android:textColor="@android:color/black"
-        android:layout_below="@id/diseases_scroll_view"
+        android:layout_below="@id/symptoms_scroll_view"
         />
 
         <!-- Social Media Section -->

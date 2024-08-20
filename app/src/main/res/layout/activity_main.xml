@@ -54,11 +54,11 @@
         app:headerLayout="@layout/drawer_header"
         app:menu="@menu/drawer_menu"/>
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <!-- Semi-transparent overlay and progress bar -->
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <!-- Your existing UI components here -->
+        android:layout_height="match_parent"
+        android:visibility="gone">
 
         <!-- Semi-transparent overlay -->
         <View
@@ -66,7 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#FFFFFF"
-        android:visibility="gone" />
+            android:visibility="gone" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -75,7 +75,5 @@
             android:layout_centerInParent="true"
             android:visibility="gone" />
     </RelativeLayout>
-
-
 
 </androidx.drawerlayout.widget.DrawerLayout>

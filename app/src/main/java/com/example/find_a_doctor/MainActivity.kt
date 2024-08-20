@@ -18,12 +18,13 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.ComponentActivity
+import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var progressBar: ProgressBar
     private lateinit var overlay: View
@@ -128,6 +129,23 @@ class MainActivity : ComponentActivity() {
                 overlay.visibility = View.GONE
             }, 1500)
         }
+
+
+        val btnOpenDoctor: CardView = findViewById(R.id.btn_open_doctor)
+        btnOpenDoctor.setOnClickListener {
+            overlay.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
+
+            val intent = Intent(this, DoctorActivity::class.java)
+            intent.putExtra("TITLE", "All Doctors")
+            startActivity(intent)
+
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+                overlay.visibility = View.GONE
+            }, 1500)
+        }
+
     }
 
     private fun showHelplineDialog() {
@@ -172,48 +190,56 @@ class MainActivity : ComponentActivity() {
         val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
         startActivity(intent)
     }
-
     private fun handleMenuItemClick(itemId: Int) {
         when (itemId) {
             R.id.nav_home -> {
-                // Handle the Home action
-                showToast("Home selected")
-                Log.d("nav_item_Clicked","Home Selected")
+
             }
             R.id.nav_profile -> {
                 // Handle the Profile action
+                startActivity(Intent(this, HospitalActivity::class.java))
                 showToast("Profile selected")
             }
-            R.id.nav_appointment -> {
-                // Handle the Appointments action
-                showToast("Appointments selected")
-            }
-            R.id.nav_search_doctor -> {
-                // Handle the Search Doctor action
-                showToast("Search Doctor selected")
-            }
-            R.id.nav_search_hospital -> {
-                // Handle the Search Hospital action
-                showToast("Search Hospital selected")
-            }
-            R.id.contact_us -> {
-                // Handle the Contact Us action
-                showToast("Contact Us selected")
-            }
-            R.id.settings -> {
-                // Handle the Settings action
-                showToast("Settings selected")
-            }
-            R.id.logout -> {
-                // Handle the Logout action
-                showToast("Log out selected")
-            }
+//            R.id.nav_appointment -> {
+//                // Handle the Appointments action
+//                startActivity(Intent(this, AppointmentActivity::class.java))
+//                showToast("Appointments selected")
+//            }
+//            R.id.nav_search_doctor -> {
+//                // Handle the Search Doctor action
+//                startActivity(Intent(this, SearchDoctorActivity::class.java))
+//                showToast("Search Doctor selected")
+//            }
+//            R.id.nav_search_hospital -> {
+//                // Handle the Search Hospital action
+//                startActivity(Intent(this, SearchHospitalActivity::class.java))
+//                showToast("Search Hospital selected")
+//            }
+//            R.id.contact_us -> {
+//                // Handle the Contact Us action
+//                startActivity(Intent(this, ContactUsActivity::class.java))
+//                showToast("Contact Us selected")
+//            }
+//            R.id.settings -> {
+//                // Handle the Settings action
+//                startActivity(Intent(this, SettingsActivity::class.java))
+//                showToast("Settings selected")
+//            }
+//            R.id.logout -> {
+//                // Handle the Logout action
+//                // You might want to add logout logic here before starting another activity
+//                startActivity(Intent(this, LoginActivity::class.java))
+//                showToast("Log out selected")
+//            }
             else -> {
                 // Handle unknown menu item
+                showToast("Unknown item selected")
             }
         }
+        // Close the drawer after selection
         drawerLayout.closeDrawer(GravityCompat.START)
     }
+
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()

@@ -12,9 +12,18 @@
         android:supportsRtl="true"
         tools:targetApi="31">
         <activity
+            android:name=".DoctorActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FindADoctor.NoActionBar"/>
+        <activity
+            android:name=".DoctorProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.FindADoctor.NoActionBar"/>
+
+        <activity
             android:name=".HospitalProfileActivity"
-            android:theme="@style/Theme.FindADoctor.NoActionBar"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.FindADoctor.NoActionBar" />
         <activity
             android:name=".BaseActivity"
             android:exported="false" />

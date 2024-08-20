@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="16dp"
+    android:paddingHorizontal="0dp">
+
+    <!-- Horizontal Slider -->
+    <HorizontalScrollView
+        android:id="@+id/horizontalSlider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:overScrollMode="never"
+        android:paddingHorizontal="16dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tabProfileDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_border"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:text="Profile Details"
+
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onTabClicked"
+                android:textColor="@android:color/white"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:id="@+id/tabAvailability"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Availability"
+
+                android:padding="16dp"
+                android:background="@drawable/rounded_border"
+                android:layout_marginStart="4dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onTabClicked"
+                android:textColor="@android:color/black"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:id="@+id/tabVideos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Video(s)"
+
+                android:background="@drawable/rounded_border"
+                android:layout_marginStart="4dp"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onTabClicked"
+                android:textColor="@android:color/black"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:id="@+id/tabReviews"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Review(s)"
+
+                android:background="@drawable/rounded_border"
+                android:layout_marginStart="4dp"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onTabClicked"
+                android:textColor="@android:color/black"
+                tools:ignore="OnClick" />
+
+            <TextView
+
+                android:id="@+id/tabAbout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About"
+
+                android:background="@drawable/rounded_border"
+                android:layout_marginStart="4dp"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onTabClicked"
+                android:textColor="@android:color/black"
+                tools:ignore="OnClick" />
+
+            <TextView
+                android:id="@+id/tabDiffDxn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diff. Dxn"
+
+                android:background="@drawable/rounded_border"
+                android:layout_marginStart="4dp"
+                android:padding="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="onTabClicked"
+                android:textColor="@android:color/black"
+                tools:ignore="OnClick" />
+
+            <!-- Add more tabs as needed -->
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Main Content Scrollable -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/horizontalSlider"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="72dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/profileCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/horizontalSlider"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_border"
+                android:elevation="2dp"
+                android:padding="16dp"
+                android:layout_marginHorizontal="16dp"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/profileImage"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_avatar"
+                    android:layout_marginEnd="16dp"
+                    android:scaleType="centerCrop" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:id="@+id/profileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Dr. Fatima Niazi"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:textColor="@android:color/black" />
+
+                    <TextView
+                        android:id="@+id/profileSpecialty"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Physiotherapist"
+                        android:textColor="@android:color/darker_gray" />
+
+                    <TextView
+                        android:id="@+id/profileQualifications"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="BSPT (Pb), TDPT/M.Phil. (KEMU), MS Orthopedic"
+                        android:textColor="@android:color/darker_gray" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Profile Details Section -->
+            <LinearLayout
+                android:id="@+id/profileDetailsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_marginHorizontal="16dp"
+                android:layout_below="@id/profileCard"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/rounded_border"
+                android:elevation="1dp">
+
+                <!-- Heading for Profile Details -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Profile Details"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Content for Profile Details -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineHeight="24sp"
+                    android:text="Dr. Fatima Niazi has over 15 years of experience in physiotherapy. She specializes in sports injuries and rehabilitation. She has worked with numerous high-profile athletes and provides comprehensive treatment plans tailored to individual needs."
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp" />
+            </LinearLayout>
+
+            <!-- Availability Section -->
+            <LinearLayout
+                android:id="@+id/availabilitySection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp"
+                android:layout_below="@id/profileDetailsSection"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/rounded_border"
+                android:elevation="1dp">
+
+                <!-- Heading for Availability -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Availability"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Content for Availability -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Monday - Friday: 9:00 AM - 5:00 PM\nSaturday: 10:00 AM - 3:00 PM\nSunday: Closed"
+                    android:textColor="@android:color/black"
+                    android:lineHeight="24sp"
+                    android:textSize="16sp"
+                    android:paddingTop="4dp"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <!-- Videos Section -->
+            <LinearLayout
+                android:id="@+id/videosSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp"
+                android:layout_below="@id/availabilitySection"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/rounded_border"
+                android:elevation="1dp">
+
+                <!-- Heading for Videos -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Videos"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Content for Videos -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Video 1: Introduction to Physiotherapy\nVideo 2: Techniques for Sports Injury Rehabilitation\nVideo 3: Home Exercises for Back Pain Relief"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:lineHeight="24sp"
+                    android:paddingTop="4dp" />
+            </LinearLayout>
+
+            <!-- Reviews Section -->
+            <LinearLayout
+                android:id="@+id/reviewsSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp"
+                android:layout_below="@id/videosSection"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/rounded_border"
+                android:elevation="1dp">
+
+                <!-- Heading for Reviews -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Reviews"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Content for Reviews -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="John Doe: Dr. Fatima is a fantastic physiotherapist. She helped me recover from my knee surgery quickly and effectively. Highly recommended!\n\nJane Smith: Her personalized treatment plan really worked for me. Excellent care and support throughout my rehab."
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:lineHeight="20sp"
+                    android:paddingTop="4dp"
+                    android:textStyle="italic"
+                    android:autoLink="web" />
+            </LinearLayout>
+
+            <!-- About Section -->
+            <LinearLayout
+                android:id="@+id/aboutSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp"
+                android:layout_below="@id/reviewsSection"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/rounded_border"
+                android:elevation="1dp">
+
+                <!-- Heading for About -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="About"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Content for About -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dr. Fatima Niazi is a renowned physiotherapist with a passion for helping individuals achieve optimal physical health. Her approach combines modern techniques with a holistic perspective, ensuring that each patient receives personalized care. Dr. Niazi is also an active contributor to various medical journals and conferences."
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:lineHeight="24sp"
+                    android:paddingTop="4dp" />
+            </LinearLayout>
+
+            <!-- Differential Diagnosis Section -->
+            <LinearLayout
+                android:id="@+id/diffDxnSection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginHorizontal="16dp"
+                android:layout_below="@id/aboutSection"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/rounded_border"
+                android:elevation="1dp">
+
+                <!-- Heading for Differential Diagnosis -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Differential Diagnosis"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingBottom="8dp" />
+
+                <!-- Content for Differential Diagnosis -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Common differential diagnoses include:\n- Muscular strains\n- Ligament sprains\n- Tendonitis\n- Joint dislocations\n- Herniated discs\n\nEach condition requires a unique treatment approach, which will be assessed based on clinical evaluation and diagnostic imaging."
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:lineHeight="24sp"
+                    android:paddingTop="4dp" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <!-- Buttons Section -->
+    <LinearLayout
+        android:id="@+id/buttonLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/white"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="CALL HELPLINE"
+            android:background="@drawable/rounded_border"
+            android:textColor="@android:color/black"
+            android:layout_marginEnd="8dp"/>
+
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Book Appointment"
+            android:background="@drawable/rounded_border"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textColor="@android:color/white"/>
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,193 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@+id/doctor_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:elevation="2dp"
+        android:background="@android:color/white">
+
+        <!-- doctor Icon -->
+        <ImageView
+            android:id="@+id/doctor_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginEnd="20dp"
+            android:layout_marginTop="15dp"
+
+            android:src="@drawable/doctor"
+            android:scaleType="fitCenter"
+            android:background="@drawable/circle_background_gradient_gray"
+
+            android:padding="8dp"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentTop="true"
+            />
+
+        <!-- doctor Name -->
+        <TextView
+            android:id="@+id/doctor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/doctor_image"
+            android:layout_alignParentTop="true"
+            android:text="Aadil doctor"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <!-- Rating -->
+
+
+        <TextView
+            android:id="@+id/doctor_specialization"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/doctor_name"
+            android:layout_toEndOf="@id/doctor_image"
+            android:text="Physiotherapist, Chiropactor"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:id="@+id/doctor_qualification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/doctor_specialization"
+            android:layout_toEndOf="@id/doctor_image"
+            android:text="BSPT (Pb), TDPT/M.Phil, (KEMU)"
+            />
+
+        <TextView
+            android:id="@+id/doctor_experience"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/doctor_qualification"
+            android:layout_toEndOf="@id/doctor_image"
+            android:textColor="@android:color/black"
+            android:text="Consultant with over 23 year(s) of experience"
+            />
+
+
+        <LinearLayout
+            android:id="@+id/doctor_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@id/doctor_qualification"
+            android:layout_marginVertical="50dp">
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginEnd="20dp"
+                >
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_alignParentStart="true"
+
+                    android:src="@drawable/star"
+                    android:scaleType="fitCenter"
+
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="8dp"
+                    />
+
+                <TextView
+                    android:id="@+id/doctor_review_counts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="310"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reviews"
+                    android:textColor="@android:color/black"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_alignParentStart="true"
+
+                    android:src="@drawable/approved"
+                    android:scaleType="fitCenter"
+
+                    android:layout_gravity="center_vertical"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="8dp"
+                    />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PMC Verified"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:layout_gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <!-- Call Helpline Button -->
+        <Button
+            android:id="@+id/btn_book_appointment"
+            android:layout_width="177dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/doctor_info"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/rounded_border"
+            android:backgroundTint="@android:color/white"
+
+            android:padding="12dp"
+            android:text="Book Appointment"
+            android:textColor="@android:color/holo_red_light" />
+
+        <!-- Get Map Directions Button -->
+        <Button
+            android:id="@+id/btn_view_profile"
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/doctor_info"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_toEndOf="@id/btn_book_appointment"
+            android:background="@drawable/rounded_border"
+
+            android:text="View Profile"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>
