@@ -23,11 +23,15 @@ import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var progressBar: ProgressBar
     private lateinit var overlay: View
+
+    private lateinit var auth: FirebaseAuth
+
 
     private fun dpToPx(dp: Int): Int {
         val density = resources.displayMetrics.density
@@ -37,6 +41,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        auth = FirebaseAuth.getInstance()
 
         drawerLayout = findViewById(R.id.drawer_layout)
         progressBar = findViewById(R.id.progress_bar)
@@ -100,13 +107,34 @@ class MainActivity : AppCompatActivity() {
             symptomsLayout.addView(itemView)
         }
 
-        // Add disease items dynamically
+
+        // List of disease names
+        val diseaseNames = listOf(
+            "Influenza",
+            "Diabetes",
+            "Hypertension",
+            "Asthma",
+            "Tuberculosis",
+            "Pneumonia",
+            "Cancer",
+            "Arthritis",
+            "Eczema",
+            "Migraine"
+        )
+
         for (i in diseaseResourceIds) {
             val itemView = inflater.inflate(R.layout.item_disease, diseasesLayout, false)
             val imageView = itemView.findViewById<ImageView>(R.id.imageViewDisease)
             val textView = itemView.findViewById<TextView>(R.id.textViewDiseaseName)
+
+            // Set image resource
             imageView.setImageResource(i)
-            textView.text = "Disease"
+
+            // Generate a random index to pick a disease name
+            val randomDiseaseName = diseaseNames[(diseaseNames.indices).random()]
+            textView.text = randomDiseaseName
+
+            // Add the item view to the layout
             diseasesLayout.addView(itemView)
         }
 
@@ -225,6 +253,13 @@ class MainActivity : AppCompatActivity() {
 //                startActivity(Intent(this, SettingsActivity::class.java))
 //                showToast("Settings selected")
 //            }
+            R.id.logout_button -> {
+                // Handle the Logout action
+                auth.signOut()
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+                showToast("Log out selected")
+            }
 //            R.id.logout -> {
 //                // Handle the Logout action
 //                // You might want to add logout logic here before starting another activity
@@ -238,6 +273,15 @@ class MainActivity : AppCompatActivity() {
         }
         // Close the drawer after selection
         drawerLayout.closeDrawer(GravityCompat.START)
+    }
+
+    override fun onStart() {
+        super.onStart()
+        val user = auth.currentUser
+        if (user == null) {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
     }
 
 

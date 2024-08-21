@@ -194,6 +194,7 @@
         android:layout_marginTop="20dp"
         android:paddingStart="16dp"
         android:text="Hospital's Doctors"
+        android:textStyle="bold"
         android:layout_below="@id/hospital_profile"
 
         android:textColor="@android:color/black"

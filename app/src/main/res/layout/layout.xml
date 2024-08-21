@@ -99,9 +99,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="How can we help you today?"
-        android:textSize="18sp"
+        android:textAppearance="@style/CustomFontTextAppearance"
+        android:textSize="17sp"
      android:textStyle="bold"
-        android:paddingTop="24dp"
+        android:paddingTop="26dp"
+        android:paddingBottom="8dp"
         android:textColor="@android:color/black"
         android:layout_below="@id/appointments_section"
         />
@@ -141,7 +143,8 @@
                     android:text="Video Consultation"
                     android:textSize="16sp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -176,7 +179,8 @@
                         android:text="In-Clinic Visit"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -202,7 +206,8 @@
                         android:text="Other Service"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -237,7 +242,8 @@
                     android:text="Another Service"
                     android:textSize="16sp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                  />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -249,28 +255,29 @@
 
             <!-- 2x2 item -->
             <LinearLayout
+                android:id="@+id/font"
                 android:layout_width="wrap_content"
                 android:layout_height="80dp"
                 android:layout_weight="2"
                 android:background="@drawable/gradient_4"
+                android:elevation="4dp"
                 android:orientation="vertical"
-                android:padding="8dp"
-                android:elevation="4dp">
+                android:padding="8dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="More Services"
-                    android:textSize="16sp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Detailed dummy text about more services offered. Example description here."
-                    android:textSize="10sp"
-                    android:textColor="@android:color/black" />
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -309,6 +316,8 @@
                     android:layout_height="38dp"
                     android:layout_gravity="center"
                     android:scaleType="fitCenter"
+
+
                     android:src="@drawable/star" />
 
                 <TextView
@@ -346,6 +355,7 @@
                     android:layout_width="49dp"
                     android:layout_height="40dp"
                     android:layout_gravity="center"
+
                     android:scaleType="fitCenter"
                     android:src="@drawable/male_doctor" />
 
@@ -384,6 +394,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
+
                     android:scaleType="fitCenter"
                     android:src="@drawable/hospital" />
 
@@ -421,6 +432,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:layout_gravity="center"
+
                     android:scaleType="fitCenter"
                     android:src="@drawable/blog" />
 
@@ -451,7 +463,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Diseases"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textStyle="bold"
             android:layout_marginTop="8dp"
             android:paddingVertical="12dp"
@@ -498,7 +510,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Promotions"
-        android:textSize="18sp"
+        android:textSize="17sp"
         android:textStyle="bold"
 
 
@@ -600,7 +612,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Symptoms"
-            android:textSize="18sp"
+            android:textSize="17sp"
            android:textStyle="bold"
             android:paddingVertical="16dp"
             android:textColor="@android:color/black" />
@@ -647,7 +659,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Follow Us"
-        android:textSize="18sp"
+        android:textSize="17sp"
         android:textStyle="bold"
 
         android:paddingTop="24dp"
