@@ -2,28 +2,25 @@ package com.example.find_a_doctor
 
 import android.app.AlertDialog
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ListView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
@@ -176,6 +173,25 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    private fun deleteUserAccount() {
+        val user = auth.currentUser
+        user?.let {
+            it.delete()
+                .addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        Toast.makeText(this, "Account deleted successfully", Toast.LENGTH_SHORT).show()
+                        // Optionally, redirect to login screen or exit the app
+                        finish() // Close the activity
+                    } else {
+                        Toast.makeText(this, "Failed to delete account: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+        } ?: run {
+            Toast.makeText(this, "No user is currently logged in", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+
     private fun showHelplineDialog() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_helpline, null)
         val builder = AlertDialog.Builder(this, R.style.CustomDialogTheme)
@@ -233,30 +249,36 @@ class MainActivity : AppCompatActivity() {
 //                startActivity(Intent(this, AppointmentActivity::class.java))
 //                showToast("Appointments selected")
 //            }
-//            R.id.nav_search_doctor -> {
-//                // Handle the Search Doctor action
-//                startActivity(Intent(this, SearchDoctorActivity::class.java))
-//                showToast("Search Doctor selected")
-//            }
-//            R.id.nav_search_hospital -> {
-//                // Handle the Search Hospital action
-//                startActivity(Intent(this, SearchHospitalActivity::class.java))
-//                showToast("Search Hospital selected")
-//            }
-//            R.id.contact_us -> {
-//                // Handle the Contact Us action
-//                startActivity(Intent(this, ContactUsActivity::class.java))
-//                showToast("Contact Us selected")
-//            }
+            R.id.nav_search_doctor -> {
+                // Handle the Search Doctor action
+                deleteUserAccount()
+                showToast("Search Doctor selected")
+            }
+            R.id.nav_search_hospital -> {
+                // Handle the Search Hospital action
+                startActivity(Intent(this, HospitalActivity::class.java))
+                showToast("Search Hospital selected")
+            }
+
+
+
+            R.id.contact_us -> {
+                // Handle the Contact Us action
+                startActivity(Intent(this, ContactUsActivity::class.java))
+                showToast("Contact Us selected")
+            }
 //            R.id.settings -> {
 //                // Handle the Settings action
 //                startActivity(Intent(this, SettingsActivity::class.java))
 //                showToast("Settings selected")
 //            }
+
+
+
             R.id.logout_button -> {
                 // Handle the Logout action
                 auth.signOut()
-                startActivity(Intent(this, LoginActivity::class.java))
+                startActivity(Intent(this, HomeActivity::class.java))
                 finish()
                 showToast("Log out selected")
             }
@@ -279,7 +301,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         val user = auth.currentUser
         if (user == null) {
-            startActivity(Intent(this, LoginActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }
     }

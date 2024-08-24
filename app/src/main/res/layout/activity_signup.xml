@@ -6,41 +6,76 @@
     android:gravity="center"
     android:padding="16dp">
 
+    <!-- Centered Image -->
+    <ImageView
+        android:id="@+id/signupImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_background_color_red"
+        android:tint="@android:color/white"
+        android:scaleType="centerCrop"
+        android:padding="8dp"
+        android:src="@drawable/doctor"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Header Text -->
+    <TextView
+        android:id="@+id/signupHeaderTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find a Doctor"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Descriptive Text -->
+
+    <!-- Email Input Field -->
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="Enter your email"
         android:inputType="textEmailAddress"
         android:padding="12dp"
-        android:background="@drawable/rounded_border"/>
+        android:background="@drawable/rounded_border"
+        android:layout_marginBottom="12dp"/>
 
+    <!-- Password Input Field -->
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Enter your password"
         android:inputType="textPassword"
         android:padding="12dp"
         android:background="@drawable/rounded_border"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginBottom="12dp"/>
 
+    <!-- Sign Up Button -->
     <Button
         android:id="@+id/signUpButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign Up"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:background="@drawable/rounded_border"
         android:padding="12dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:textColor="@android:color/white"
         android:layout_marginTop="24dp"/>
 
+    <!-- Login Prompt -->
     <TextView
         android:id="@+id/loginTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Already have an account? Login"
+        android:textSize="18dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="16dp"/>
-
+        android:layout_marginTop="16dp"
+        android:gravity="center"/>
 </LinearLayout>

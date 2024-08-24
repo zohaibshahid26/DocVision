@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+
+    android:padding="16dp">
+
+
+    <!-- Header Section -->
+    <ImageView
+        android:id="@+id/doctorImageView"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/circle_background_color_red"
+        android:padding="8dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/doctor"
+
+        android:tint="@android:color/white" />
+
+    <!-- Form Section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@id/doctorImageView"
+        android:layout_marginTop="24dp">
+
+
+
+            <EditText
+                android:id="@+id/edit_text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:background="@drawable/rounded_border_effect"
+                android:textColor="#000000"
+
+                android:padding="16dp"
+                android:layout_marginBottom="8dp"
+/>
+
+        <EditText
+            android:id="@+id/edit_text_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:background="@drawable/rounded_border_effect"
+
+            android:textColor="#000000"
+
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"
+            />
+
+
+        <EditText
+            android:id="@+id/edit_text_phone_no"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone No."
+            android:background="@drawable/rounded_border_effect"
+
+            android:textColor="#000000"
+
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"
+            />
+
+
+        <EditText
+            android:id="@+id/edit_text_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Subject"
+            android:background="@drawable/rounded_border_effect"
+
+            android:textColor="#000000"
+
+            android:padding="16dp"
+            android:layout_marginBottom="8dp"
+            />
+
+
+
+        <EditText
+            android:id="@+id/edit_text_message"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="Message"
+            android:background="@drawable/rounded_border_effect"
+
+            android:textColor="#000000"
+
+            android:padding="16dp"
+            android:layout_marginBottom="9dp"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            />
+
+
+
+
+
+
+        <!-- Send Button -->
+        <Button
+            android:id="@+id/button_send"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Send"
+            android:textColor="#FFFFFF"
+            android:background="#FF0000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+
+    <!-- Footer Section -->
+    <TextView
+        android:id="@+id/footer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="We appreciate your feedback!"
+        android:textColor="#000000"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+
+
+</RelativeLayout>

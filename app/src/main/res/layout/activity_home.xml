@@ -6,34 +6,62 @@
     android:gravity="center"
     android:padding="16dp">
 
+    <!-- Centered Image -->
+    <ImageView
+        android:id="@+id/doctorImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_background_color_red"
+        android:tint="@android:color/white"
+        android:scaleType="centerCrop"
+        android:padding="8dp"
+        android:src="@drawable/doctor"
+    android:layout_marginBottom="8dp"/>
+
+    <!-- Welcome Text -->
     <TextView
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome"
+        android:text="Welcome to Find a Doctor"
+        android:textStyle="bold"
+
         android:textSize="24sp"
         android:textColor="@android:color/black"
-        android:layout_marginBottom="24dp"/>
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Login"
-        android:padding="12dp"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:background="@drawable/rounded_border"
-        android:textColor="@android:color/white"
         android:layout_marginBottom="16dp"/>
 
-    <Button
-        android:id="@+id/signUpButton"
+    <!-- Descriptive Text -->
+    <TextView
+        android:id="@+id/descriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:padding="12dp"
+        android:text="Connecting you with trusted healthcare professionals near you."
+        android:textSize="16sp"
+        android:gravity="center"
+
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Login Button -->
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_border"
-        android:backgroundTint="@android:color/black"
-        android:textColor="@android:color/white"/>
+        android:backgroundTint="@android:color/holo_red_light"
+        android:padding="12dp"
+        android:text="Login"
+        android:textColor="@android:color/white" />
+
+    <!-- Sign Up Button -->
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="246dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rounded_border"
+        android:padding="12dp"
+
+        android:text="Sign Up"
+        android:textColor="@android:color/black" />
 
 </LinearLayout>

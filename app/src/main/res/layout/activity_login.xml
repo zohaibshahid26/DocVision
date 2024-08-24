@@ -6,41 +6,106 @@
     android:gravity="center"
     android:padding="16dp">
 
+    <ImageView
+        android:id="@+id/doctorImageView"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:background="@drawable/circle_background_color_red"
+        android:tint="@android:color/white"
+        android:scaleType="centerCrop"
+        android:padding="8dp"
+        android:src="@drawable/doctor"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Descriptive Text -->
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Find a Doctor"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="32dp"/>
+
+    <!-- Additional Information Text -->
+
+
+
     <EditText
         android:id="@+id/emailEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="Enter your email"
         android:inputType="textEmailAddress"
         android:padding="12dp"
-        android:background="@drawable/rounded_border"/>
+        android:background="@drawable/rounded_border"
+        android:layout_marginBottom="12dp"/>
 
+    <!-- Password Input Field -->
     <EditText
         android:id="@+id/passwordEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Password"
+        android:hint="Enter your password"
         android:inputType="textPassword"
         android:padding="12dp"
         android:background="@drawable/rounded_border"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginBottom="12dp"/>
 
+
+    <!-- Login Button -->
     <Button
         android:id="@+id/loginButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Login"
+        android:text="Login to Your Account"
+        android:gravity="center"
+        android:textSize="18sp"
+        android:background="@drawable/rounded_border"
         android:padding="12dp"
         android:backgroundTint="@android:color/holo_red_light"
         android:textColor="@android:color/white"
-        android:layout_marginTop="24dp"/>
+        android:layout_marginTop="8dp"/>
+
+
+    <!-- Sign Up Prompt -->
+    <TextView
+        android:id="@+id/forgotPasswordTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp"
+        android:text="Forgot Password?"
+        android:textColor="@android:color/holo_blue_dark" />
+
+    <!-- Forgot Password Link -->
+
+
 
     <TextView
         android:id="@+id/signUpTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Don't have an account? Sign Up"
+        android:textSize="18dp"
         android:textColor="@android:color/black"
-        android:layout_marginTop="16dp"/>
+        android:layout_marginTop="18dp"
+        android:layout_gravity="center"/>
+
+    <!-- Email Input Field -->
+    <TextView
+        android:id="@+id/additionalInfoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:paddingLeft="16dp"
+        android:layout_marginTop="32dp"
+
+        android:paddingRight="16dp"
+        android:text="Log in to connect with top healthcare professionals and manage your medical appointments easily."
+        android:textSize="16sp" />
 
 </LinearLayout>
