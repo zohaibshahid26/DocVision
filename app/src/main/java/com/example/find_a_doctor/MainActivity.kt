@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var progressBar: ProgressBar
     private lateinit var overlay: View
+    private lateinit var userNameTextView: TextView
 
     private lateinit var auth: FirebaseAuth
 
@@ -42,6 +44,18 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+        userNameTextView = findViewById(R.id.user_name)
+        // Get the current user
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            // Set the TextView with the user's email or display name
+            // You can use currentUser.displayName if available, or currentUser.email
+            val username = currentUser.displayName ?: currentUser.email
+            userNameTextView.text = username ?: "No username available"
+        } else {
+            userNameTextView.text = "User not logged in"
+        }
+
         drawerLayout = findViewById(R.id.drawer_layout)
         progressBar = findViewById(R.id.progress_bar)
         overlay = findViewById(R.id.overlay)
@@ -50,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
-//
+
         // Set up NavigationView
         val navigationView: NavigationView = findViewById(R.id.navigation_view)
 
@@ -169,6 +183,11 @@ class MainActivity : AppCompatActivity() {
                 progressBar.visibility = View.GONE
                 overlay.visibility = View.GONE
             }, 1500)
+        }
+
+        val btnOpenApiTest: Button = findViewById(R.id.btn_open_api_test)
+        btnOpenApiTest.setOnClickListener {
+            startActivity(Intent(this, ApiTestActivity::class.java))
         }
 
     }

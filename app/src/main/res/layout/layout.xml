@@ -28,7 +28,6 @@
             android:id="@+id/user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Hello, Abdullah Malik"
             android:textSize="18sp"
             android:textFontWeight="500"
             android:layout_gravity="center_vertical"
