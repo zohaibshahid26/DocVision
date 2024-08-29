@@ -1,6 +1,6 @@
 package com.example.find_a_doctor
 
-import Doctor
+import DoctorDTO
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -10,17 +10,17 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide // Make sure to add the Glide dependency in your build.gradle
 
-class DoctorAdapter(private val context: Context, private var doctors: List<Doctor>) : RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
+class DoctorAdapter(private val context: Context, private var doctors: List<DoctorDTO>) : RecyclerView.Adapter<DoctorAdapter.DoctorViewHolder>() {
 
     // ViewHolder class to hold the views for each item
     class DoctorViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val doctorImageView: ImageView = view.findViewById(R.id.doctor_image)
+        val doctorImageView: ImageView = view.findViewById(R.id.doctor_icon)
         val doctorNameTextView: TextView = view.findViewById(R.id.doctor_name)
         val doctorSpecializationTextView: TextView = view.findViewById(R.id.doctor_specialization)
         val doctorQualificationTextView: TextView = view.findViewById(R.id.doctor_qualification)
         val doctorExperienceTextView: TextView = view.findViewById(R.id.doctor_experience)
-        val doctorReviewsTextView: TextView = view.findViewById(R.id.doctor_review_counts)
 
         val viewProfileButton: Button = view.findViewById(R.id.btn_view_profile) // Reference to the View Profile button
     }
@@ -34,19 +34,25 @@ class DoctorAdapter(private val context: Context, private var doctors: List<Doct
     // Replace the contents of a view (invoked by the layout manager)
     override fun onBindViewHolder(holder: DoctorViewHolder, position: Int) {
         val doctor = doctors[position]
-        holder.doctorImageView.setImageResource(doctor.image) // Assuming image is a drawable resource ID
+
+        // Load the doctor's image using Glide
+        Glide.with(context)
+            .load(doctor.doctorImage) // URL or path to the image
+            .placeholder(R.drawable.doctor) // Optional placeholder image
+            .into(holder.doctorImageView)
+
         holder.doctorNameTextView.text = doctor.name
         holder.doctorSpecializationTextView.text = doctor.specialization
         holder.doctorQualificationTextView.text = doctor.qualification
-        holder.doctorExperienceTextView.text = doctor.experience
-        holder.doctorReviewsTextView.text = doctor.reviews
+        holder.doctorExperienceTextView.text = "${doctor.experience} years"
+
 
         // Set up the View Profile button click listener
         holder.viewProfileButton.setOnClickListener {
             // Start the Doctor Profile Activity and pass the doctor's ID or other necessary data
             val intent = Intent(context, DoctorProfileActivity::class.java)
             intent.putExtra("doctorId", doctor.id)
-            intent.putExtra("TITLE", "Doctor Profile") // Pass the doctor's ID
+            intent.putExtra("TITLE", "Doctor Profile")
             context.startActivity(intent)
         }
     }
@@ -56,7 +62,7 @@ class DoctorAdapter(private val context: Context, private var doctors: List<Doct
         return doctors.size
     }
 
-    fun updateData(newDoctors: List<Doctor>) {
+    fun updateData(newDoctors: List<DoctorDTO>) {
         doctors = newDoctors
         notifyDataSetChanged() // Notify the adapter to refresh the list
     }

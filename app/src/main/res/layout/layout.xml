@@ -115,8 +115,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/textViewAppointmentsLabel"
-        android:layout_marginTop="16dp"
-        >
+        android:layout_marginTop="16dp">
 
         <!-- First Row: 2x2 item, stacked 1x2 items vertically -->
         <LinearLayout
@@ -124,14 +123,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- 2x2 item -->
+            <!-- 2x2 item: Video Consultation -->
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginBottom="12dp"
                 android:background="@drawable/rounded_gradient"
-
                 android:orientation="vertical"
                 android:padding="8dp"
                 android:elevation="4dp">
@@ -142,13 +140,12 @@
                     android:text="Video Consultation"
                     android:textSize="16sp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dummy text here for additional details or information ."
+                    android:text="Connect with our expert doctors from the comfort of your home through a secure video call."
                     android:textSize="10sp"
                     android:textColor="@android:color/black" />
             </LinearLayout>
@@ -161,11 +158,10 @@
                 android:orientation="vertical"
                 android:layout_marginStart="8dp">
 
-                <!-- 1x2 item -->
+                <!-- 1x2 item: In-Clinic Visit -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
-
                     android:orientation="vertical"
                     android:padding="8dp"
                     android:background="@drawable/gradient_1"
@@ -178,18 +174,17 @@
                         android:text="In-Clinic Visit"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Additional information or dummy text about in-clinic visits."
+                        android:text="Schedule an appointment to visit our clinic for a comprehensive examination and treatment."
                         android:textSize="10sp"
                         android:textColor="@android:color/black" />
                 </LinearLayout>
 
-                <!-- 1x2 item -->
+                <!-- 1x2 item: Prescription Refill -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="68dp"
@@ -202,16 +197,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Other Service"
+                        android:text="Prescription Refill"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textStyle="bold"
-                        />
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="More dummy text or details about other services."
+                        android:text="Request a refill of your medications or get a new prescription from our pharmacy."
                         android:textSize="10sp"
                         android:textColor="@android:color/black" />
                 </LinearLayout>
@@ -224,7 +218,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <!-- 2x2 item -->
+            <!-- 2x2 item: Health Checkup Packages -->
             <LinearLayout
                 android:layout_width="150dp"
                 android:layout_height="80dp"
@@ -238,21 +232,20 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Another Service"
+                    android:text="Health Checkup Packages"
                     android:textSize="16sp"
                     android:textColor="@android:color/black"
-                    android:textStyle="bold"
-                  />
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Dummy text for additional context."
+                    android:text="Choose from a variety of health checkup packages tailored to your needs and get a thorough health assessment."
                     android:textSize="10sp"
                     android:textColor="@android:color/black" />
             </LinearLayout>
 
-            <!-- 2x2 item -->
+            <!-- 2x2 item: Online Consultation Booking -->
             <LinearLayout
                 android:id="@+id/font"
                 android:layout_width="wrap_content"
@@ -266,7 +259,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="More Services"
+                    android:text="Online Consultation Booking"
                     android:textColor="@android:color/black"
                     android:textStyle="bold"
                     android:textSize="16sp" />
@@ -274,12 +267,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Detailed dummy text about more services offered. Example description here."
+                    android:text="Book online consultations with our specialist doctors at your convenience and avoid long waiting times."
                     android:textColor="@android:color/black"
                     android:textSize="10sp" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/card_services_grid"

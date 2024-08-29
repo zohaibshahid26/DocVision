@@ -50,7 +50,7 @@ class MainActivity : AppCompatActivity() {
         if (currentUser != null) {
             // Set the TextView with the user's email or display name
             // You can use currentUser.displayName if available, or currentUser.email
-            val username = currentUser.displayName ?: currentUser.email
+            val username = currentUser.email
             userNameTextView.text = username ?: "No username available"
         } else {
             userNameTextView.text = "User not logged in"
@@ -64,7 +64,7 @@ class MainActivity : AppCompatActivity() {
         menuButton.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
-
+//
         // Set up NavigationView
         val navigationView: NavigationView = findViewById(R.id.navigation_view)
 
@@ -182,7 +182,22 @@ class MainActivity : AppCompatActivity() {
             progressBar.postDelayed({
                 progressBar.visibility = View.GONE
                 overlay.visibility = View.GONE
-            }, 1500)
+            }, 500)
+        }
+
+        val btnOpenAppointment: LinearLayout = findViewById(R.id.appointments_section)
+        btnOpenAppointment.setOnClickListener {
+            overlay.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
+
+            val intent = Intent(this, AppointmentActivity::class.java)
+            intent.putExtra("TITLE", "Your Appointments")
+            startActivity(intent)
+
+            progressBar.postDelayed({
+                progressBar.visibility = View.GONE
+                overlay.visibility = View.GONE
+            }, 500)
         }
 
         val btnOpenApiTest: Button = findViewById(R.id.btn_open_api_test)
@@ -258,34 +273,34 @@ class MainActivity : AppCompatActivity() {
             R.id.nav_home -> {
 
             }
+
             R.id.nav_profile -> {
                 // Handle the Profile action
                 startActivity(Intent(this, HospitalActivity::class.java))
                 showToast("Profile selected")
             }
-//            R.id.nav_appointment -> {
-//                // Handle the Appointments action
-//                startActivity(Intent(this, AppointmentActivity::class.java))
-//                showToast("Appointments selected")
-//            }
-            R.id.nav_search_doctor -> {
-                // Handle the Search Doctor action
-                deleteUserAccount()
-                showToast("Search Doctor selected")
-            }
-            R.id.nav_search_hospital -> {
-                // Handle the Search Hospital action
-                startActivity(Intent(this, HospitalActivity::class.java))
-                showToast("Search Hospital selected")
-            }
 
+            R.id.nav_appointment -> {
+                //Handle the Appointments action
+                startActivity(Intent(this, AppointmentActivity::class.java))
+                showToast("Appointments selected")
+           }
+                R.id.nav_search_doctor -> {
+                    // Handle the Search Doctor action
 
+                    showToast("Search Doctor selected")
+                }
+                R.id.nav_search_hospital -> {
+                    // Handle the Search Hospital action
+                    startActivity(Intent(this, HospitalActivity::class.java))
+                    showToast("Search Hospital selected")
+                }
 
-            R.id.contact_us -> {
-                // Handle the Contact Us action
-                startActivity(Intent(this, ContactUsActivity::class.java))
-                showToast("Contact Us selected")
-            }
+//                R.id.contact_us -> {
+//                    // Handle the Contact Us action
+//                    startActivity(Intent(this, ContactUsActivity::class.java))
+//                    showToast("Contact Us selected")
+//                }
 //            R.id.settings -> {
 //                // Handle the Settings action
 //                startActivity(Intent(this, SettingsActivity::class.java))
@@ -293,28 +308,29 @@ class MainActivity : AppCompatActivity() {
 //            }
 
 
-
-            R.id.logout_button -> {
-                // Handle the Logout action
-                auth.signOut()
-                startActivity(Intent(this, HomeActivity::class.java))
-                finish()
-                showToast("Log out selected")
-            }
+                R.id.logout_button -> {
+                    // Handle the Logout action
+                    auth.signOut()
+                    startActivity(Intent(this, HomeActivity::class.java))
+                    finish()
+                    showToast("Log out selected")
+                }
 //            R.id.logout -> {
 //                // Handle the Logout action
 //                // You might want to add logout logic here before starting another activity
 //                startActivity(Intent(this, LoginActivity::class.java))
 //                showToast("Log out selected")
 //            }
-            else -> {
-                // Handle unknown menu item
-                showToast("Unknown item selected")
+                else -> {
+                    // Handle unknown menu item
+                    showToast("Unknown item selected")
+                }
             }
+            // Close the drawer after selection
+            drawerLayout.closeDrawer(GravityCompat.START)
         }
-        // Close the drawer after selection
-        drawerLayout.closeDrawer(GravityCompat.START)
-    }
+
+
 
     override fun onStart() {
         super.onStart()

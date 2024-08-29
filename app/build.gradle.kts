@@ -4,6 +4,8 @@ plugins {
 
     id("com.google.gms.google-services")
 
+    kotlin("kapt")
+
 }
 
 
@@ -72,5 +74,11 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation("com.github.bumptech.glide:glide:4.15.1") // Use the latest version
+    kapt("com.github.bumptech.glide:compiler:4.15.1") // Required for annotation processing
+
+
+    implementation("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+")
 
 }
