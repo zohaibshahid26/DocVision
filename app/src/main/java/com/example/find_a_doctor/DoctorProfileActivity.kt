@@ -1,5 +1,6 @@
 package com.example.find_a_doctor
 
+import DoctorDTO
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
@@ -7,10 +8,15 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class DoctorProfileActivity : BaseActivity() {
 
@@ -35,9 +41,16 @@ class DoctorProfileActivity : BaseActivity() {
 
         val frameLayout: FrameLayout = findViewById(R.id.content_frame)
         layoutInflater.inflate(R.layout.activity_doctor_profile, frameLayout, true)
-
         val title = intent.getStringExtra("TITLE") ?: "Doctor Profile"
         setHeaderTitle(title)
+
+        val doctorId = intent.getIntExtra("doctorId", 0)
+        if (doctorId != 0) {
+            fetchDoctorById(doctorId)
+        } else {
+            Toast.makeText(this, "Invalid doctor ID", Toast.LENGTH_SHORT).show()
+        }
+
 
 
         scrollView = findViewById(R.id.scrollView)
@@ -66,8 +79,33 @@ class DoctorProfileActivity : BaseActivity() {
         tabReviews.setOnClickListener { onTabClicked(it, reviewsSection) }
         tabAbout.setOnClickListener { onTabClicked(it, aboutSection) }
         tabDiffDxn.setOnClickListener { onTabClicked(it, diffDxnSection) }
+    }
 
+    private fun fetchDoctorDetails(doctorId: Int) {
+        // Fetch the doctor details, example using Retrofit
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                val response = RetrofitInstance.api.getDoctor(doctorId)
+                withContext(Dispatchers.Main) {
+                    updateDoctorUI(response)
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(applicationContext, "Failed to load doctor details", Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
 
+    private fun updateDoctorUI(doctor: DoctorDTO) {
+        profileNameTextView.text = doctor.name
+        profileSpecialtyTextView.text = doctor.specialization
+        profileQualificationsTextView.text = doctor.qualification
+        Glide.with(this)
+            .load(doctor.doctorImage)
+            .placeholder(R.drawable.ic_avatar)
+            .error(R.drawable.ic_avatar)
+            .into(profileImage)
     }
 
 
