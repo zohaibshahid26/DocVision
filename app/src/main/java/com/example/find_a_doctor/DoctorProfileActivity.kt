@@ -1,5 +1,6 @@
 package com.example.find_a_doctor
 
+import BookAppointmentDTO
 import DoctorDTO
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -13,6 +14,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -107,6 +109,40 @@ class DoctorProfileActivity : BaseActivity() {
             .error(R.drawable.ic_avatar)
             .into(profileImage)
     }
+
+
+    private fun bookAppointment() {
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            val userId = currentUser.uid
+            val doctorId = intent.getIntExtra("doctorId", 0)  // Assuming doctorId is passed via intent
+
+            // Placeholder for appointment time; you might want to add a picker or another method to set this
+            val appointmentTime = "2024-09-10T14:00:00" // ISO 8601 format
+
+            val bookAppointmentDTO = BookAppointmentDTO(appointmentTime, userId, doctorId)
+
+            CoroutineScope(Dispatchers.IO).launch {
+                try {
+                    val response = RetrofitInstance.api.bookAppointment(bookAppointmentDTO)
+                    withContext(Dispatchers.Main) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(applicationContext, "Appointment booked successfully!", Toast.LENGTH_LONG).show()
+                        } else {
+                            Toast.makeText(applicationContext, "Failed to book appointment: ${response.errorBody()?.string()}", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                } catch (e: Exception) {
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(applicationContext, "Network error: Failed to connect", Toast.LENGTH_LONG).show()
+                    }
+                }
+            }
+        } else {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+        }
+    }
+
 
 
     private fun onTabClicked(clickedTab: View, section: View) {
