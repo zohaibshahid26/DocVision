@@ -47,6 +47,7 @@ class DoctorProfileActivity : AppCompatActivity() {
     private lateinit var profileQualificationsTextView: TextView
     private lateinit var profileExperienceTextView: TextView
     private lateinit var profileAboutTextView: TextView
+    private lateinit var availabilityTime:TextView
 
     private lateinit var buttonCallHelpline: Button
     private lateinit var buttonBookAppointment: Button
@@ -116,6 +117,8 @@ class DoctorProfileActivity : AppCompatActivity() {
         profileAboutTextView = findViewById(R.id.profileDetailsSection1) // This should be changed to a specific TextView if needed
         Log.d("DoctorProfileActivity", "profileAboutTextView is initialized")
 
+        availabilityTime = findViewById(R.id.availability)
+
         buttonCallHelpline = findViewById(R.id.button2)
         Log.d("DoctorProfileActivity", "buttonCallHelpline is initialized")
 
@@ -162,6 +165,7 @@ class DoctorProfileActivity : AppCompatActivity() {
         qualificationsText.setSpan(StyleSpan(android.graphics.Typeface.BOLD), 0, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
         experienceText.setSpan(StyleSpan(android.graphics.Typeface.BOLD), 0, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
+        availabilityTime.text = "2024-08-29 08:00:00.0000000"
         // Set the formatted text to TextViews
         profileSpecialtyTextView.text = specialtyText
         profileQualificationsTextView.text = qualificationsText
@@ -205,11 +209,13 @@ class DoctorProfileActivity : AppCompatActivity() {
                             Toast.makeText(applicationContext, "Appointment booked successfully!", Toast.LENGTH_LONG).show()
                         } else {
                             Toast.makeText(applicationContext, "Failed to book appointment: ${response.errorBody()?.string()}", Toast.LENGTH_LONG).show()
+                            Log.d("BookAppointmentApi",response.message())
                         }
                     }
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(applicationContext, "Network error: Failed to connect", Toast.LENGTH_LONG).show()
+                        Log.d("Exception Api",e.toString())
                     }
                 }
             }
