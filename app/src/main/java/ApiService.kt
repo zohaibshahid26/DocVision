@@ -48,7 +48,7 @@ interface ApiService {
 
     // Appointment endpoints
     @POST("api/Appointments/book")
-    suspend fun bookAppointment(@Body bookAppointmentDto: BookAppointmentDTO): Response<String>
+    suspend fun bookAppointment(@Body bookAppointmentDto: BookAppointmentDTO): Response<Void>
 
     @GET("api/Appointments/by-doctor/{doctorId}")
     suspend fun getAppointmentsByDoctor(@Path("doctorId") doctorId: Int): List<AppointmentDTO>

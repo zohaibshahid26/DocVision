@@ -1,5 +1,5 @@
 package com.example.find_a_doctor
-
+import java.util.*
 import BookAppointmentDTO
 import DoctorDTO
 import android.content.res.ColorStateList
@@ -23,6 +23,11 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class DoctorProfileActivity : AppCompatActivity() {
 
@@ -162,10 +167,20 @@ class DoctorProfileActivity : AppCompatActivity() {
 
         // Apply bold style to the hardcoded text
         specialtyText.setSpan(StyleSpan(Typeface.BOLD), 0, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        qualificationsText.setSpan(StyleSpan(android.graphics.Typeface.BOLD), 0, 12, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        experienceText.setSpan(StyleSpan(android.graphics.Typeface.BOLD), 0, 11, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
+        qualificationsText.setSpan(
+            StyleSpan(android.graphics.Typeface.BOLD),
+            0,
+            12,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        experienceText.setSpan(
+            StyleSpan(android.graphics.Typeface.BOLD),
+            0,
+            11,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
 
-        availabilityTime.text = "2024-08-29 08:00:00.0000000"
+        availabilityTime.text = doctor.appointmentTime
         // Set the formatted text to TextViews
         profileSpecialtyTextView.text = specialtyText
         profileQualificationsTextView.text = qualificationsText
@@ -182,22 +197,17 @@ class DoctorProfileActivity : AppCompatActivity() {
         val availabilityText = if (doctor.isAvailable) "Available" else "Not Available"
         availabilitySection.findViewById<TextView>(R.id.availabilityContent).text = availabilityText
 
-        if(!doctor.isAvailable)
-        {
+        if (!doctor.isAvailable) {
             buttonBookAppointment.isClickable = false
         }
     }
-
-
-
-    private fun bookAppointment() {
+    fun bookAppointment() {
+         val appointmentTime = findViewById<TextView>(R.id.availability).text.toString()
+        // Proceed with using formattedAppointmentTime for your booking DTO
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
             val userId = currentUser.uid
             val doctorId = intent.getIntExtra("doctorId", 0)  // Assuming doctorId is passed via intent
-
-            // Placeholder for appointment time; you might want to add a picker or another method to set this
-            val appointmentTime = findViewById<TextView>(R.id.availability).text.toString()
 
             val bookAppointmentDTO = BookAppointmentDTO(appointmentTime, userId, doctorId)
 
@@ -209,13 +219,11 @@ class DoctorProfileActivity : AppCompatActivity() {
                             Toast.makeText(applicationContext, "Appointment booked successfully!", Toast.LENGTH_LONG).show()
                         } else {
                             Toast.makeText(applicationContext, "Failed to book appointment: ${response.errorBody()?.string()}", Toast.LENGTH_LONG).show()
-                            Log.d("BookAppointmentApi",response.message())
                         }
                     }
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(applicationContext, "Network error: Failed to connect", Toast.LENGTH_LONG).show()
-                        Log.d("Exception Api",e.toString())
+                        Toast.makeText(applicationContext, "Network error: Failed to connect ${e.message} ", Toast.LENGTH_LONG).show()
                     }
                 }
             }
