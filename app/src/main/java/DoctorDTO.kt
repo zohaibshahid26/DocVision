@@ -6,7 +6,8 @@ data class DoctorDTO(
     val qualification: String,
     val experience: Int, // Number of years of experience
     val about: String,
-    val email: String,
-    val isAvailable: Boolean, // Availability of the doctor
+    val email: String, // Added email field
+    val isAvailable: Boolean, // Added availability field
+    val appointmentTime: String, // Added appointment time field, assuming ISO 8601 format
     val hospital: HospitalDTO // Nested HospitalDTO object
 )
