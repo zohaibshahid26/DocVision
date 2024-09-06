@@ -3,6 +3,7 @@ package com.example.find_a_doctor
 import AppointmentDTO
 import BookAppointmentDTO
 import DoctorDTO
+import FavoriteDoctorDTO
 import HospitalDTO
 import retrofit2.Response
 import retrofit2.http.Body
@@ -58,4 +59,11 @@ interface ApiService {
 
     @PUT("api/Appointments/cancel/{appointmentId}")
     suspend fun cancelAppointment(@Path("appointmentId") appointmentId: Int): Response<String>
+
+    @POST("api/FavoriteDoctor")
+    suspend fun addFavoriteDoctor(@Body favoriteDoctorDTO: FavoriteDoctorDTO): Response<Void>
+
+    @GET("api/FavoriteDoctor/{patientId}")
+    suspend fun getFavoriteDoctors(@Path("patientId") patientId: String): List<FavoriteDoctorDTO>
+
 }
