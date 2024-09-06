@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@android:color/white"
     android:padding="24dp"
-    android:layout_marginBottom="16dp"
+    android:layout_marginBottom="8dp"
     android:elevation="1dp">
 
     <!-- Hospital Name and Icon -->
@@ -58,7 +58,7 @@
             android:textStyle="bold"
             android:text="Aadil Hospital"
 
-            android:textSize="18sp"/>
+            android:textSize="20sp"/>
 
         <TextView
             android:id="@+id/hospital_address"

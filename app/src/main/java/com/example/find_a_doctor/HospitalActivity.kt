@@ -39,6 +39,7 @@ class HospitalActivity : BaseActivity() {
     private lateinit var progressBar: ProgressBar
     private var originalHospitalList: List<HospitalDTO> = listOf() // Updated to use DTO
 
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
