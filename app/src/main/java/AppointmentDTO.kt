@@ -3,5 +3,6 @@ data class AppointmentDTO(
     val appointmentTime: String, // Use ISO 8601 format
     val patientId: String,
     val doctorName: String,
-    val status: Boolean
+    val status: Boolean,
+    val doctorId :Int
 )
