@@ -67,6 +67,7 @@ dependencies {
     implementation(libs.androidx.core)
     implementation(libs.androidx.gridlayout)
     implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -74,6 +75,8 @@ dependencies {
 
     implementation(platform("com.google.firebase:firebase-bom:33.1.2"))
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation ("com.google.android.material:material:1.9.0")
 
     implementation("com.github.bumptech.glide:glide:4.15.1") // Use the latest version
     kapt("com.github.bumptech.glide:compiler:4.15.1") // Required for annotation processing

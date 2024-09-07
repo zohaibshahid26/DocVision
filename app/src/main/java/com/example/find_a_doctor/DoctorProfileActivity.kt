@@ -2,6 +2,7 @@ package com.example.find_a_doctor
 import java.util.*
 import BookAppointmentDTO
 import DoctorDTO
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
@@ -199,6 +200,17 @@ class DoctorProfileActivity : AppCompatActivity() {
 
         if (!doctor.isAvailable) {
             buttonBookAppointment.isClickable = false
+            buttonBookAppointment.isEnabled = false
+            buttonBookAppointment.alpha = 0.5f
+            buttonBookAppointment.text = "Not Available"
+        } else {
+            buttonBookAppointment.setOnClickListener {
+                bookAppointment()
+                // Start the Doctor Profile Activity and pass the doctor's ID or other necessary data
+                val intent = Intent(this, AppointmentActivity::class.java)
+                intent.putExtra("TITLE", "Appointments")
+                startActivity(intent)
+            }
         }
     }
     fun bookAppointment() {

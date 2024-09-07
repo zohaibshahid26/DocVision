@@ -48,7 +48,7 @@ class HospitalActivity : BaseActivity() {
         layoutInflater.inflate(R.layout.activity_hospital, contentFrame, true)
 
         // Set up the header title
-        val title = intent.getStringExtra("TITLE") ?: "Default Title"
+        val title = intent.getStringExtra("TITLE") ?: "Hospitals"
         setHeaderTitle(title)
 
         // Reference to the HorizontalScrollView and LinearLayout inside it

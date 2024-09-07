@@ -1,5 +1,6 @@
 package com.example.find_a_doctor
 
+import DoctorAdapter
 import DoctorDTO
 import HospitalDTO
 import android.content.Intent
@@ -144,7 +145,7 @@ class HospitalProfileActivity : BaseActivity() {
     }
 
     private fun updateDoctorsRecyclerView(doctorsDTO: List<DoctorDTO>) {
-        val doctorsAdapter = DoctorAdapter(this, doctorsDTO)
+        val doctorsAdapter = DoctorAdapter(this, doctorsDTO, FavoriteDoctorDatabaseHelper(this))
         doctorsRecyclerView.adapter = doctorsAdapter
     }
 

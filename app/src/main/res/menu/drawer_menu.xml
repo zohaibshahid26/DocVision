@@ -32,7 +32,8 @@
 
     <item
         android:id="@+id/settings"
-        android:title="Settings"
+        android:title="Delete Account"
+        android:iconTint="@android:color/holo_red_light"
 
         android:icon="@drawable/settings"/>
 

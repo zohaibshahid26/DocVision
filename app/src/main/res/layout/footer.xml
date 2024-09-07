@@ -42,12 +42,15 @@
 
     <!-- Appointments Button -->
     <LinearLayout
+        android:id="@+id/appointments_btn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_weight="1"
         android:gravity="center"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:clickable="true"
+        android:focusable="true">
 
         <ImageButton
             android:id="@+id/appointments_button"

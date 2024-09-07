@@ -2,76 +2,66 @@ package com.example.find_a_doctor
 
 import DoctorAdapter
 import DoctorDTO
-import HospitalAdapter
-import HospitalDTO
-import android.content.Intent
-import android.net.Uri
-import android.net.http.HttpException
+import android.content.Context
 import android.os.Build
 import android.os.Bundle
-import android.telephony.PhoneNumberUtils
 import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
-import android.widget.HorizontalScrollView
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.SearchView
-import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresExtension
-import androidx.core.content.ContextCompat
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.example.find_a_doctor.R
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DoctorActivity : BaseActivity() {
+class FavouriteDoctorActivity : BaseActivity() {
 
     private lateinit var doctorRecyclerView: RecyclerView
     private lateinit var doctorAdapter: DoctorAdapter
-
-
     private lateinit var progressBar: ProgressBar
     private var originaldoctorList: List<DoctorDTO> = listOf() // Updated to use DTO
+    private lateinit var dbHelper: FavoriteDoctorDatabaseHelper
 
-    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Find the content frame and inflate the specific layout
         val contentFrame: FrameLayout = findViewById(R.id.content_frame)
-        layoutInflater.inflate(R.layout.activity_doctor, contentFrame, true)
+        layoutInflater.inflate(R.layout.activity_favourite_doctor, contentFrame, true)
 
         // Set up the header title
-        val title = intent.getStringExtra("TITLE") ?: "Doctors"
+        val title = intent.getStringExtra("TITLE") ?: "Default Title"
         setHeaderTitle(title)
 
-        // Reference to the HorizontalScrollView and LinearLayout inside it
+        // Initialize database helper
+        dbHelper = FavoriteDoctorDatabaseHelper(this)
+
+        // Reference to the ProgressBar
         progressBar = findViewById(R.id.progress_bar)
         Log.d("doctorActivity", "Progress Bar: $progressBar")
 
         // Initialize RecyclerView
         doctorRecyclerView = findViewById(R.id.doctor_list)
         doctorRecyclerView.layoutManager = LinearLayoutManager(this)
-        doctorAdapter = DoctorAdapter(this, originaldoctorList, FavoriteDoctorDatabaseHelper(this))
+        doctorAdapter = DoctorAdapter(this, originaldoctorList, dbHelper)
         doctorRecyclerView.adapter = doctorAdapter
 
         // Set up the SearchView
         setupSearchView()
 
         // Fetch and populate data
-        fetchdoctors()
+        fetchDoctorsFromLocalDb()
     }
 
-    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-    private fun fetchdoctors() {
+    private fun fetchDoctorsFromLocalDb() {
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 // Show progress bar while loading data
@@ -79,28 +69,20 @@ class DoctorActivity : BaseActivity() {
                     progressBar.visibility = View.VISIBLE
                 }
 
-                // Fetch the list of doctors from the API
-                val doctors = RetrofitInstance.api.getDoctors()
-
+                val favoriteDoctors = dbHelper.getAllFavoriteDoctors()
 
                 // Populate the UI with fetched data
                 withContext(Dispatchers.Main) {
-
-                    originaldoctorList = doctors
+                    originaldoctorList = favoriteDoctors
                     doctorAdapter.updateData(originaldoctorList)
                     progressBar.visibility = View.GONE // Hide progress bar when done
                 }
-            } catch (e: HttpException) {
-                // Handle HTTP exceptions
-                showError("Network error: ${e.message}")
             } catch (e: Exception) {
-                // Handle other exceptions
+                // Handle exception
                 showError("An error occurred: ${e.message}")
             }
         }
     }
-
-
 
     private fun setupSearchView() {
         val searchView: SearchView = findViewById(R.id.search_doctor)
@@ -110,18 +92,17 @@ class DoctorActivity : BaseActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                filterdoctors(newText)
+                filterDoctors(newText)
                 return true
             }
         })
     }
 
-    private fun filterdoctors(query: String?) {
+    private fun filterDoctors(query: String?) {
         val filteredList = originaldoctorList.filter { doctor ->
             doctor.name.contains(query ?: "", ignoreCase = true) ||
                     doctor.specialization.contains(query ?: "", ignoreCase = true) ||
                     doctor.qualification.contains(query ?: "", ignoreCase = true)
-
         }
 
         // Update the adapter with the filtered list
@@ -129,20 +110,21 @@ class DoctorActivity : BaseActivity() {
 
         // Show or hide the RecyclerView based on the search results
         doctorRecyclerView.visibility = if (filteredList.isNotEmpty()) View.VISIBLE else View.GONE
-
-
-
     }
-
-
-
 
     private fun showError(message: String) {
         // Handle error display (e.g., show a Toast or Snackbar)
-        Toast.makeText(this, "Error Fetching Data", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        // Refresh the doctor list when activity resumes
+        fetchDoctorsFromLocalDb()
     }
 
     override fun customizeHeader() {
         // Customize header for doctorActivity if needed
     }
 }
+

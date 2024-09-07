@@ -25,4 +25,6 @@
     <string name="helpline">Helpline</string>
     <string name="phone_number_1">0322-6291-630</string>
     <string name="phone_number_2">042-3221-0000</string>
+
+    <string name="ic_clock">\uF017</string> <!-- Unicode for the clock icon -->
 </resources>

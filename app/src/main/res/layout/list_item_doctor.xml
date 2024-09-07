@@ -7,9 +7,8 @@
     android:paddingHorizontal="12dp"
     android:paddingVertical="16dp"
     android:layout_marginBottom="8dp"
-android:elevation="1dp"
- android:background="@android:color/white"
-    tools:context=".MainActivity">
+    android:elevation="1dp"
+    android:background="@android:color/white">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/doctor_image"
@@ -75,7 +74,6 @@ android:elevation="1dp"
         android:orientation="horizontal"
         android:layout_gravity="center_vertical"
         android:layout_marginStart="4dp"
-
         android:gravity="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/doctor_experience"
@@ -85,7 +83,6 @@ android:elevation="1dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             android:layout_marginEnd="20dp">
 
             <ImageView
@@ -144,8 +141,8 @@ android:elevation="1dp"
         android:background="@drawable/rounded_border"
         android:backgroundTint="@android:color/white"
         android:text="Book Appointment"
-     android:layout_marginStart="4dp"
-      android:layout_marginVertical="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginVertical="8dp"
         android:textColor="@android:color/holo_red_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/btn_view_profile"
@@ -156,12 +153,29 @@ android:elevation="1dp"
         android:layout_width="152dp"
         android:layout_height="45dp"
         android:layout_marginStart="28dp"
-
-android:layout_marginVertical="8dp"
+        android:layout_marginVertical="8dp"
         android:background="@drawable/rounded_border"
         android:backgroundTint="@android:color/holo_red_light"
         android:text="View Profile"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_book_appointment" />
+
+    <!-- Add Favorite Button -->
+    <ImageButton
+        android:id="@+id/btn_favorite"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/favourite"
+        android:tint="@android:color/holo_red_light"
+
+        android:scaleType="centerCrop"
+        android:background="@android:color/transparent"
+
+
+    app:layout_constraintTop_toTopOf="@id/doctor_image"
+    app:layout_constraintEnd_toEndOf="parent"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="8dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

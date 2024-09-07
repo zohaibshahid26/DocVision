@@ -51,7 +51,15 @@ class MainActivity : AppCompatActivity() {
             // Set the TextView with the user's email or display name
             // You can use currentUser.displayName if available, or currentUser.email
             val username = currentUser.email
-            userNameTextView.text = username ?: "No username available"
+            //neglect the @gmail.com
+            val index = username?.indexOf("@") ?: -1
+
+            if (index != -1) {
+                val usernameWithoutDomain = username?.substring(0, index)
+                userNameTextView.text = usernameWithoutDomain ?: "No username available"
+            } else {
+                userNameTextView.text = username ?: "No username available"
+            }
         } else {
             userNameTextView.text = "User not logged in"
         }
@@ -149,6 +157,15 @@ class MainActivity : AppCompatActivity() {
             diseasesLayout.addView(itemView)
         }
 
+        val appointmentButton: LinearLayout = findViewById(R.id.appointments_btn)
+        appointmentButton.setOnClickListener {
+            overlay.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
+            val intent = Intent(this, AppointmentActivity::class.java)
+            intent.putExtra("TITLE", "Appointments")
+            startActivity(intent)
+        }
+
         val helplineText: LinearLayout = findViewById(R.id.helpline)
         helplineText.setOnClickListener {
             showHelplineDialog()
@@ -168,6 +185,19 @@ class MainActivity : AppCompatActivity() {
                 overlay.visibility = View.GONE
             }, 1500)
         }
+
+
+        val btnFavoriteDoctors: CardView = findViewById(R.id.btn_favorite_doctors)
+        btnFavoriteDoctors.setOnClickListener {
+            overlay.visibility = View.VISIBLE
+            progressBar.visibility = View.VISIBLE
+
+            val intent = Intent(this, FavouriteDoctorActivity::class.java)
+            intent.putExtra("TITLE", "Favourites")
+            startActivity(intent)
+        }
+
+
 
 
         val btnOpenDoctor: CardView = findViewById(R.id.btn_open_doctor)
@@ -191,7 +221,7 @@ class MainActivity : AppCompatActivity() {
             progressBar.visibility = View.VISIBLE
 
             val intent = Intent(this, AppointmentActivity::class.java)
-            intent.putExtra("TITLE", "Your Appointments")
+            intent.putExtra("TITLE", "Appointments")
             startActivity(intent)
 
             progressBar.postDelayed({
@@ -200,10 +230,6 @@ class MainActivity : AppCompatActivity() {
             }, 500)
         }
 
-        val btnOpenApiTest: Button = findViewById(R.id.btn_open_api_test)
-        btnOpenApiTest.setOnClickListener {
-            startActivity(Intent(this, ApiTestActivity::class.java))
-        }
 
     }
 
@@ -282,11 +308,13 @@ class MainActivity : AppCompatActivity() {
 
             R.id.nav_appointment -> {
                 //Handle the Appointments action
+
                 startActivity(Intent(this, AppointmentActivity::class.java))
                 showToast("Appointments selected")
            }
                 R.id.nav_search_doctor -> {
                     // Handle the Search Doctor action
+                    startActivity(Intent(this, DoctorActivity::class.java))
 
                     showToast("Search Doctor selected")
                 }
@@ -301,11 +329,12 @@ class MainActivity : AppCompatActivity() {
 //                    startActivity(Intent(this, ContactUsActivity::class.java))
 //                    showToast("Contact Us selected")
 //                }
-//            R.id.settings -> {
-//                // Handle the Settings action
-//                startActivity(Intent(this, SettingsActivity::class.java))
-//                showToast("Settings selected")
-//            }
+            R.id.settings -> {
+                // Handle the Settings action
+
+                showToast("Account Deleted")
+                deleteUserAccount()
+            }
 
 
                 R.id.logout_button -> {

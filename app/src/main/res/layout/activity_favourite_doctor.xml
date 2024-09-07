@@ -23,7 +23,7 @@
         <SearchView
             android:id="@+id/search_doctor"
             android:iconifiedByDefault="false"
-            android:queryHint="Search By Name, Specialization ..."
+            android:queryHint="Search by Name, Specialization ..."
             style="@style/CustomSearchViewStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
@@ -40,9 +40,9 @@
         android:layout_marginHorizontal="8dp"
         android:clipToPadding="false"
         android:layout_marginTop="80dp"
-
+        android:layout_marginBottom="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/search_bar"

@@ -34,13 +34,7 @@
                 <include
                     layout="@layout/layout" />
                 <!-- Other content here -->
-                <Button
-                    android:id="@+id/btn_open_api_test"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Open API Test"
-                    android:layout_margin="16dp"
-                    android:layout_gravity="center"/>
+
 
             </LinearLayout>
 

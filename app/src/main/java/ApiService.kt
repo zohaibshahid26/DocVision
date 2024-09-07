@@ -58,7 +58,7 @@ interface ApiService {
     suspend fun getAppointmentsByPatient(@Path("patientId") patientId: String): List<AppointmentDTO>
 
     @PUT("api/Appointments/cancel/{appointmentId}")
-    suspend fun cancelAppointment(@Path("appointmentId") appointmentId: Int): Response<String>
+    suspend fun cancelAppointment(@Path("appointmentId") appointmentId: Int): Response<Void>
 
     @POST("api/FavoriteDoctor")
     suspend fun addFavoriteDoctor(@Body favoriteDoctorDTO: FavoriteDoctorDTO): Response<Void>

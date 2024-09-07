@@ -24,7 +24,7 @@
         <SearchView
             android:id="@+id/search_hospital"
             android:iconifiedByDefault="false"
-            android:queryHint="Search Hospital"
+            android:queryHint="Search by Name, Location ..."
             style="@style/CustomSearchViewStyle"
 
             app:layout_constraintTop_toTopOf="parent"
