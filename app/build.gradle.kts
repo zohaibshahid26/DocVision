@@ -83,6 +83,4 @@ dependencies {
     kapt("com.github.bumptech.glide:compiler:4.15.1") // Required for annotation processing
 
 
-    implementation("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+")
-
 }

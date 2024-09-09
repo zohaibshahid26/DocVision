@@ -77,13 +77,13 @@ class DoctorActivity : BaseActivity() {
                 // Handle HTTP exceptions
                 withContext(Dispatchers.Main) {
                     showError("Network error: ${e.message}")
-                    hideLoading()  // Hide progress bar in case of error
+                    //hideLoading()  // Hide progress bar in case of error
                 }
             } catch (e: Exception) {
                 // Handle other exceptions
                 withContext(Dispatchers.Main) {
                     showError("An error occurred: ${e.message}")
-                    hideLoading()  // Hide progress bar in case of error
+                    //hideLoading()  // Hide progress bar in case of error
                 }
             }
         }

@@ -122,7 +122,7 @@ class DoctorProfileActivity : BaseActivity() {
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    hideLoading() // Hide loading indicator in case of an error
+                    //hideLoading() // Hide loading indicator in case of an error
                     Toast.makeText(applicationContext, "Failed to load doctor details", Toast.LENGTH_LONG).show()
                 }
             }
@@ -176,6 +176,11 @@ class DoctorProfileActivity : BaseActivity() {
         } else {
             buttonBookAppointment.setOnClickListener {
                 bookAppointment()
+
+                //add a delay
+
+                Thread.sleep(1000)
+
                 // Start the AppointmentActivity when booking an appointment
                 val intent = Intent(this, AppointmentActivity::class.java)
                 intent.putExtra("TITLE", "Appointments")

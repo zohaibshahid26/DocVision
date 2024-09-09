@@ -75,6 +75,14 @@ class FavouriteDoctorActivity : BaseActivity() {
                 withContext(Dispatchers.Main) {
                     originaldoctorList = favoriteDoctors
                     doctorAdapter.updateData(originaldoctorList)
+
+                    if(originaldoctorList.isEmpty()){
+                        showNoContent("No Favourite Doctors Found", "Explore Doctors", true)
+                    }
+                    else{
+                        hideNoContent()
+                    }
+
                     progressBar.visibility = View.GONE // Hide progress bar when done
                 }
             } catch (e: Exception) {

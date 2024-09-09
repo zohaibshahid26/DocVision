@@ -14,9 +14,71 @@
         />
 
 
+
+
     <!-- Header Layout -->
     <include
         layout="@layout/custom_header" />
+
+    <LinearLayout
+        android:id="@+id/no_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone"
+        >
+
+        <!-- ImageView in the center -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <!-- Line at the bottom -->
+            <ImageView
+                android:id="@+id/centerImageView"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/no_content"
+                />
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:padding="8dp"
+                android:text="Currently, no content available at the moment"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textAlignment="center"
+                android:gravity="center"/>
+
+            <!-- Sign Up Button -->
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rounded_border"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:paddingHorizontal="50dp"
+
+                android:text="Explore"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <!-- ProgressBar -->
 

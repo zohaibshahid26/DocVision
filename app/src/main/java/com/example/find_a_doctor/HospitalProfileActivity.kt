@@ -67,7 +67,7 @@ class HospitalProfileActivity : BaseActivity() {
 
             fetchHospitalDetails(hospitalId)
             fetchDoctorsForHospital(hospitalId)
-            hideLoading()
+
         }
     }
 
@@ -78,6 +78,7 @@ class HospitalProfileActivity : BaseActivity() {
                 val response = RetrofitInstance.api.getHospital(hospitalId)
                 withContext(Dispatchers.Main) {
                     updateHospitalUI(response)
+
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
@@ -95,6 +96,7 @@ class HospitalProfileActivity : BaseActivity() {
                 withContext(Dispatchers.Main) {
                     val doctors = response.filter { it.hospital.id == hospitalId }
                     updateDoctorsRecyclerView(doctors)
+                    hideLoading()
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {

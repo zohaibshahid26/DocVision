@@ -29,6 +29,7 @@
             android:layout_height="wrap_content"/>
     </androidx.cardview.widget.CardView>
 
+
     <!-- RecyclerView for Doctor List -->
 
     <!-- ProgressBar for loading indication -->

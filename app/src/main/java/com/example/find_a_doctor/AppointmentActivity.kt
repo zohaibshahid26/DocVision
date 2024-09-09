@@ -24,6 +24,7 @@ import com.example.find_a_doctor.R
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -60,7 +61,10 @@ class AppointmentActivity : BaseActivity() {
     private fun fetchAppointments() {
         showLoading()  // Show progress bar
 
+        // simulate delay
+
         CoroutineScope(Dispatchers.IO).launch {
+            delay(500)
             try {
                 val user = FirebaseAuth.getInstance().currentUser
                 if (user != null) {
@@ -73,6 +77,15 @@ class AppointmentActivity : BaseActivity() {
 
                     withContext(Dispatchers.Main) {
                         appointmentAdapter.updateData(filteredAppointments)
+
+                        if(filteredAppointments.isEmpty()){
+                            showNoContent("No Appointments Found", "Explore Doctors", false)
+                        }
+
+                        else{
+                            hideNoContent()
+                        }
+
                         hideLoading()  // Hide progress bar
                     }
                 }
@@ -80,7 +93,7 @@ class AppointmentActivity : BaseActivity() {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(applicationContext, "Failed to load Appointment details", Toast.LENGTH_LONG).show()
-                    hideLoading()  // Hide progress bar in case of error
+
                 }
             }
         }

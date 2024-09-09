@@ -27,6 +27,11 @@ abstract class BaseActivity : AppCompatActivity() {
     private lateinit var helpButton: Button
     private lateinit var progressBar: ProgressBar
 
+    private lateinit var noContentLayout: LinearLayout
+    private lateinit var messageTextView: TextView
+    private lateinit var buttonView: Button
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_base) // Set a base layout with header included
@@ -42,6 +47,16 @@ abstract class BaseActivity : AppCompatActivity() {
         backButton = findViewById(R.id.btn_back)
         helpButton = findViewById(R.id.btn_help)
         progressBar = findViewById(R.id.progress_bar_base)
+
+        noContentLayout = findViewById(R.id.no_content)
+        messageTextView = findViewById(R.id.message)
+        buttonView = findViewById(R.id.button)
+
+        buttonView.setOnClickListener {
+
+            val intent = Intent(this, DoctorActivity::class.java)
+            startActivity(intent)
+        }
 
         // Create a ColorDrawable with your desired color
         val redDrawable = ColorDrawable(Color.RED)
@@ -85,6 +100,17 @@ abstract class BaseActivity : AppCompatActivity() {
     fun hideLoading() {
         Log.d("BaseActivity", "Hiding loading indicator")
         progressBar.visibility = View.GONE
+    }
+
+    fun showNoContent(message: String, buttonText: String, isButtonVisible: Boolean) {
+        messageTextView.text = message
+        buttonView.text = buttonText
+        buttonView.visibility = if (isButtonVisible) View.VISIBLE else View.GONE
+        noContentLayout.visibility = View.VISIBLE
+    }
+
+    fun hideNoContent() {
+        noContentLayout.visibility = View.GONE
     }
 
     private fun showHelplineDialog() {
