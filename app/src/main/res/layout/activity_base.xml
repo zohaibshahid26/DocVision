@@ -4,9 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ProgressBar
+        android:id="@+id/progress_bar_base"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:indeterminate="true"
+        />
+
+
     <!-- Header Layout -->
     <include
         layout="@layout/custom_header" />
+
+    <!-- ProgressBar -->
+
 
 
     <!-- Content area -->

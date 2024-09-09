@@ -2,8 +2,6 @@ package com.example.find_a_doctor
 
 import DoctorAdapter
 import DoctorDTO
-import HospitalAdapter
-import HospitalDTO
 import android.content.Intent
 import android.net.Uri
 import android.net.http.HttpException
@@ -17,12 +15,10 @@ import android.widget.FrameLayout
 import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresExtension
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -36,10 +32,7 @@ class DoctorActivity : BaseActivity() {
 
     private lateinit var doctorRecyclerView: RecyclerView
     private lateinit var doctorAdapter: DoctorAdapter
-
-
-    private lateinit var progressBar: ProgressBar
-    private var originaldoctorList: List<DoctorDTO> = listOf() // Updated to use DTO
+    private var originalDoctorList: List<DoctorDTO> = listOf() // Updated to use DTO
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,54 +46,48 @@ class DoctorActivity : BaseActivity() {
         val title = intent.getStringExtra("TITLE") ?: "Doctors"
         setHeaderTitle(title)
 
-        // Reference to the HorizontalScrollView and LinearLayout inside it
-        progressBar = findViewById(R.id.progress_bar)
-        Log.d("doctorActivity", "Progress Bar: $progressBar")
-
         // Initialize RecyclerView
         doctorRecyclerView = findViewById(R.id.doctor_list)
         doctorRecyclerView.layoutManager = LinearLayoutManager(this)
-        doctorAdapter = DoctorAdapter(this, originaldoctorList, FavoriteDoctorDatabaseHelper(this))
+        doctorAdapter = DoctorAdapter(this, originalDoctorList, FavoriteDoctorDatabaseHelper(this))
         doctorRecyclerView.adapter = doctorAdapter
 
         // Set up the SearchView
         setupSearchView()
 
         // Fetch and populate data
-        fetchdoctors()
+        fetchDoctors()
     }
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
-    private fun fetchdoctors() {
+    private fun fetchDoctors() {
+        showLoading()  // Show progress bar while loading data
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Show progress bar while loading data
-                withContext(Dispatchers.Main) {
-                    progressBar.visibility = View.VISIBLE
-                }
-
                 // Fetch the list of doctors from the API
                 val doctors = RetrofitInstance.api.getDoctors()
 
-
                 // Populate the UI with fetched data
                 withContext(Dispatchers.Main) {
-
-                    originaldoctorList = doctors
-                    doctorAdapter.updateData(originaldoctorList)
-                    progressBar.visibility = View.GONE // Hide progress bar when done
+                    originalDoctorList = doctors
+                    doctorAdapter.updateData(originalDoctorList)
+                    hideLoading()  // Hide progress bar when done
                 }
             } catch (e: HttpException) {
                 // Handle HTTP exceptions
-                showError("Network error: ${e.message}")
+                withContext(Dispatchers.Main) {
+                    showError("Network error: ${e.message}")
+                    hideLoading()  // Hide progress bar in case of error
+                }
             } catch (e: Exception) {
                 // Handle other exceptions
-                showError("An error occurred: ${e.message}")
+                withContext(Dispatchers.Main) {
+                    showError("An error occurred: ${e.message}")
+                    hideLoading()  // Hide progress bar in case of error
+                }
             }
         }
     }
-
-
 
     private fun setupSearchView() {
         val searchView: SearchView = findViewById(R.id.search_doctor)
@@ -110,18 +97,17 @@ class DoctorActivity : BaseActivity() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                filterdoctors(newText)
+                filterDoctors(newText)
                 return true
             }
         })
     }
 
-    private fun filterdoctors(query: String?) {
-        val filteredList = originaldoctorList.filter { doctor ->
+    private fun filterDoctors(query: String?) {
+        val filteredList = originalDoctorList.filter { doctor ->
             doctor.name.contains(query ?: "", ignoreCase = true) ||
                     doctor.specialization.contains(query ?: "", ignoreCase = true) ||
                     doctor.qualification.contains(query ?: "", ignoreCase = true)
-
         }
 
         // Update the adapter with the filtered list
@@ -129,13 +115,7 @@ class DoctorActivity : BaseActivity() {
 
         // Show or hide the RecyclerView based on the search results
         doctorRecyclerView.visibility = if (filteredList.isNotEmpty()) View.VISIBLE else View.GONE
-
-
-
     }
-
-
-
 
     private fun showError(message: String) {
         // Handle error display (e.g., show a Toast or Snackbar)
@@ -143,6 +123,6 @@ class DoctorActivity : BaseActivity() {
     }
 
     override fun customizeHeader() {
-        // Customize header for doctorActivity if needed
+        // Customize header for DoctorActivity if needed
     }
 }

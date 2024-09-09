@@ -6,7 +6,8 @@
     android:orientation="vertical"
     android:padding="16dp"
     android:layout_margin="8dp"
-    android:background="@drawable/rounded_gradient">
+    android:background="@drawable/rounded_gradient"
+    android:backgroundTint="#FF5C5C">
 
     <!-- User Avatar -->
     <ImageView
@@ -14,6 +15,7 @@
         android:layout_width="64dp"
         android:layout_height="64dp"
         android:layout_gravity="center_horizontal"
+        android:tint="@android:color/white"
         android:src="@drawable/ic_avatar"
         android:layout_marginBottom="8dp"
         android:scaleType="centerCrop"/>
@@ -24,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Welcome Back ..."
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal"/>

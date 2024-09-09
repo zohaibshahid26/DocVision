@@ -52,7 +52,7 @@
         android:clickable="true"
         android:focusable="true">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/appointments_button"
             android:layout_width="32dp"
             android:layout_height="32dp"
@@ -73,33 +73,33 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:padding="8dp">
+<!--    <LinearLayout-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        android:layout_weight="1"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="8dp">-->
 
-        <ImageButton
-            android:id="@+id/medical_reports_button"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/medical_reports"
-            android:scaleType="fitCenter"
-            android:contentDescription="@string/nav_appointments" />
+<!--        <ImageButton-->
+<!--            android:id="@+id/medical_reports_button"-->
+<!--            android:layout_width="32dp"-->
+<!--            android:layout_height="32dp"-->
+<!--            android:background="?attr/selectableItemBackgroundBorderless"-->
+<!--            android:src="@drawable/medical_reports"-->
+<!--            android:scaleType="fitCenter"-->
+<!--            android:contentDescription="@string/nav_appointments" />-->
 
-        <TextView
-            android:id="@+id/medical_reports_text"
-            android:layout_width="103dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/medical_reports"
-            android:textColor="@android:color/black"
-            android:textSize="10sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/medical_reports_text"-->
+<!--            android:layout_width="103dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:gravity="center"-->
+<!--            android:text="@string/medical_reports"-->
+<!--            android:textColor="@android:color/black"-->
+<!--            android:textSize="10sp" />-->
 
-    </LinearLayout>
+<!--    </LinearLayout>-->
 
     <LinearLayout
         android:id="@+id/helpline"

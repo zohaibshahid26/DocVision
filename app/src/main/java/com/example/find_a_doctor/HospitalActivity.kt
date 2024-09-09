@@ -3,28 +3,24 @@ package com.example.find_a_doctor
 import HospitalAdapter
 import HospitalDTO
 import android.content.Intent
-import android.net.Uri
-import android.net.http.HttpException
 import android.os.Build
 import android.os.Bundle
 import android.telephony.PhoneNumberUtils
 import android.util.Log
 import android.view.View
-import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.annotation.RequiresExtension
-import androidx.core.content.ContextCompat
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.find_a_doctor.R
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,10 +32,9 @@ class HospitalActivity : BaseActivity() {
     private lateinit var hospitalAdapter: HospitalAdapter
     private lateinit var horizontalList: LinearLayout
     private lateinit var horizontalScrollView: HorizontalScrollView
-    private lateinit var progressBar: ProgressBar
     private var originalHospitalList: List<HospitalDTO> = listOf() // Updated to use DTO
 
-    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -55,8 +50,6 @@ class HospitalActivity : BaseActivity() {
         horizontalScrollView = findViewById(R.id.top_hospitals)
         horizontalList = findViewById(R.id.top_hospitals_horizontal_list)
         Log.d("HospitalActivity", "Horizontal List: $horizontalList")
-        progressBar = findViewById(R.id.progress_bar)
-        Log.d("HospitalActivity", "Progress Bar: $progressBar")
 
         // Initialize RecyclerView
         hospitalRecyclerView = findViewById(R.id.hospital_list)
@@ -71,15 +64,11 @@ class HospitalActivity : BaseActivity() {
         fetchHospitals()
     }
 
-    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+    @RequiresApi(Build.VERSION_CODES.S)
     private fun fetchHospitals() {
+        showLoading() // Show loading indicator while fetching data
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // Show progress bar while loading data
-                withContext(Dispatchers.Main) {
-                    progressBar.visibility = View.VISIBLE
-                }
-
                 // Fetch the list of hospitals from the API
                 val hospitals = RetrofitInstance.api.getHospitals()
 
@@ -91,14 +80,20 @@ class HospitalActivity : BaseActivity() {
                     populateTopHospitals(sortedHospitals)
                     originalHospitalList = hospitals
                     hospitalAdapter.updateData(originalHospitalList)
-                    progressBar.visibility = View.GONE // Hide progress bar when done
+                    hideLoading() // Hide loading indicator when done
                 }
             } catch (e: HttpException) {
                 // Handle HTTP exceptions
-                showError("Network error: ${e.message}")
+                withContext(Dispatchers.Main) {
+                    showError("Network error: ${e.message}")
+                    //hideLoading() // Hide loading indicator in case of an error
+                }
             } catch (e: Exception) {
                 // Handle other exceptions
-                showError("An error occurred: ${e.message}")
+                withContext(Dispatchers.Main) {
+                    showError("An error occurred: ${e.message}")
+                    //hideLoading() // Hide loading indicator in case of an error
+                }
             }
         }
     }
@@ -167,10 +162,9 @@ class HospitalActivity : BaseActivity() {
         findViewById<HorizontalScrollView>(R.id.top_hospitals).visibility = if (isQueryEmpty) View.VISIBLE else View.GONE
     }
 
-
     private fun showError(message: String) {
         // Handle error display (e.g., show a Toast or Snackbar)
-        Toast.makeText(this, "Error Fetching Data", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun customizeHeader() {

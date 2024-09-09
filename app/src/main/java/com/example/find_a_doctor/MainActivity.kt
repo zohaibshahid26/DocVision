@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -55,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             val index = username?.indexOf("@") ?: -1
 
             if (index != -1) {
-                val usernameWithoutDomain = username?.substring(0, index)
+                val usernameWithoutDomain = "Welcome Back, " + username?.substring(0, index)
                 userNameTextView.text = usernameWithoutDomain ?: "No username available"
             } else {
                 userNameTextView.text = username ?: "No username available"
@@ -82,6 +84,11 @@ class MainActivity : AppCompatActivity() {
             Log.d("navigationView","Inside")
             handleMenuItemClick(it.itemId)
             true
+        }
+
+        val notificationButton: ImageButton = findViewById(R.id.notification_icon)
+        notificationButton.setOnClickListener {
+            startActivity(Intent(this, NotificationActivity::class.java))
         }
 
         // Find the LinearLayout within the HorizontalScrollView
@@ -116,15 +123,31 @@ class MainActivity : AppCompatActivity() {
             imageContainer.addView(imageView)
         }
 
+        // Define your symptoms array
+        val symptoms = arrayOf(
+            "Fever", "Cough", "Headache", "Nausea",
+            "Fatigue", "Sore Throat", "Shortness of Breath",
+            "Fatigue", "Sore Throat", "Shortness of Breath",
+            "Muscle Pain", "Chills", "Runny Nose"
+        )
+
+        // Ensure diseaseResourceIds has exactly 10 items
+        val shuffledResourceIds = diseaseResourceIds.shuffled()
+
         // Add symptoms items dynamically
-        for (i in diseaseResourceIds.shuffled()) {
-            val itemView = inflater.inflate(R.layout.item_disease, symptomsLayout, false)
-            val imageView = itemView.findViewById<ImageView>(R.id.imageViewDisease)
-            val textView = itemView.findViewById<TextView>(R.id.textViewDiseaseName)
-            imageView.setImageResource(i)
-            textView.text = "Symptom"
-            symptomsLayout.addView(itemView)
+        for ((index, symptomId) in shuffledResourceIds.withIndex()) {
+            if (index < symptoms.size) {
+                val itemView = inflater.inflate(R.layout.item_disease, symptomsLayout, false)
+                val imageView = itemView.findViewById<ImageView>(R.id.imageViewDisease)
+                val textView = itemView.findViewById<TextView>(R.id.textViewDiseaseName)
+
+                imageView.setImageResource(symptomId)
+                textView.text = symptoms[index]  // Set the corresponding symptom name
+
+                symptomsLayout.addView(itemView)
+            }
         }
+
 
 
         // List of disease names
@@ -199,7 +222,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
         val btnOpenDoctor: CardView = findViewById(R.id.btn_open_doctor)
         btnOpenDoctor.setOnClickListener {
             overlay.visibility = View.VISIBLE
@@ -230,6 +252,14 @@ class MainActivity : AppCompatActivity() {
             }, 500)
         }
 
+
+        val btnBlogs :CardView = findViewById(R.id.btn_blogs)
+        btnBlogs.setOnClickListener {
+
+            val Intent = Intent(this, BlogsActivity::class.java)
+            startActivity(Intent)
+
+        }
 
     }
 
@@ -300,12 +330,6 @@ class MainActivity : AppCompatActivity() {
 
             }
 
-            R.id.nav_profile -> {
-                // Handle the Profile action
-                startActivity(Intent(this, HospitalActivity::class.java))
-                showToast("Profile selected")
-            }
-
             R.id.nav_appointment -> {
                 //Handle the Appointments action
 
@@ -352,7 +376,8 @@ class MainActivity : AppCompatActivity() {
 //            }
                 else -> {
                     // Handle unknown menu item
-                    showToast("Unknown item selected")
+
+                    drawerLayout.closeDrawer(GravityCompat.START)
                 }
             }
             // Close the drawer after selection

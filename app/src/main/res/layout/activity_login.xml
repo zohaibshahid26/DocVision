@@ -6,6 +6,12 @@
     android:gravity="center"
     android:padding="16dp">
 
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:visibility= "gone"/>
+
     <ImageView
         android:id="@+id/doctorImageView"
         android:layout_width="150dp"
@@ -22,7 +28,7 @@
         android:id="@+id/descriptionTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find a Doctor"
+        android:text="@string/app_name"
         android:textSize="24sp"
         android:textStyle="bold"
         android:gravity="center"
@@ -30,7 +36,6 @@
         android:layout_marginBottom="32dp"/>
 
     <!-- Additional Information Text -->
-
 
 
     <EditText
@@ -107,5 +112,6 @@
         android:paddingRight="16dp"
         android:text="Log in to connect with top healthcare professionals and manage your medical appointments easily."
         android:textSize="16sp" />
+
 
 </LinearLayout>

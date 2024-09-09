@@ -51,17 +51,15 @@ class AppointmentActivity : BaseActivity() {
 
         appointmentList = listOf()
 
-        fetchAppointments()
-
-        // Initialize the adapter with the sample appointments list
         appointmentAdapter = AppointmentAdapter(this, appointmentList)
         appointmentRecyclerView.adapter = appointmentAdapter
 
-//        // Set up the button listeners
-//        setupButtonListeners()
+        fetchAppointments()
     }
 
     private fun fetchAppointments() {
+        showLoading()  // Show progress bar
+
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val user = FirebaseAuth.getInstance().currentUser
@@ -71,26 +69,22 @@ class AppointmentActivity : BaseActivity() {
                     val response = RetrofitInstance.api.getAppointmentsByPatient(userId)
 
                     // filter appointments by status
-
                     val filteredAppointments = response.filter { it.status }
-
-
 
                     withContext(Dispatchers.Main) {
                         appointmentAdapter.updateData(filteredAppointments)
+                        hideLoading()  // Hide progress bar
                     }
                 }
 
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(applicationContext, "Failed to load Appointment details", Toast.LENGTH_LONG).show()
+                    hideLoading()  // Hide progress bar in case of error
                 }
             }
         }
     }
-
-
-
 
     override fun customizeHeader() {
         // Customize header for AppointmentActivity if needed

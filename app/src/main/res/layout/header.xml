@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    >
+    android:padding="16dp">
 
     <!-- Left Menu Button -->
     <ImageButton
@@ -22,22 +20,38 @@
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginEnd="8dp"/>
 
-    <!-- Center Logo -->
-    <TextView
-        android:id="@+id/logo"
+    <!-- Ensure no margin -->
+
+    <LinearLayout
+        android:id="@+id/image_text_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:textSize="20sp"
-        android:textColor="@android:color/black"
-        android:contentDescription="@string/logo"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="84dp"
+        android:orientation="horizontal"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/menu_button"
-        app:layout_constraintEnd_toStartOf="@id/notification_icon"
-        app:layout_constraintHorizontal_bias="0.5" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <!-- Notification Icon -->
+        <ImageView
+            android:id="@+id/additional_image"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="1dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/doctor" />
+
+        <TextView
+            android:id="@+id/image_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/app_name"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+    </LinearLayout>
+
     <ImageButton
         android:id="@+id/notification_icon"
         android:layout_width="28dp"
@@ -48,7 +62,5 @@
         android:contentDescription="@string/notification"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
+        app:layout_constraintBottom_toBottomOf="parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

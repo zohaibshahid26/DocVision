@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@drawable/ic_launcher_background" />
-    <foreground android:drawable="@drawable/ic_launcher_foreground" />
-    <monochrome android:drawable="@drawable/ic_launcher_foreground" />
+    <background android:drawable="@drawable/circle_background_color_red" />
+    <foreground android:drawable="@drawable/doctor"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:scaleType="fitCenter"
+         />/>
+    <monochrome android:drawable="@drawable/doctor"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:scaleType="fitCenter"/>
 </adaptive-icon>

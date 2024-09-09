@@ -23,7 +23,7 @@
         android:id="@+id/welcomeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Welcome to Find a Doctor"
+        android:text="Welcome to DocVision"
         android:textStyle="bold"
 
         android:textSize="24sp"

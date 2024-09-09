@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+>
+
+    <!-- ImageView in the center -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+
+        <!-- Line at the bottom -->
+        <ImageView
+            android:id="@+id/centerImageView"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/notification_empty"
+      />
+
+        <TextView
+            android:id="@+id/bottomLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:padding="8dp"
+            android:text="No notifications available"
+            android:textColor="@android:color/black"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:gravity="center"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

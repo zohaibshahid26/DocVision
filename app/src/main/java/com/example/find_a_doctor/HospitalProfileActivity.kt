@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -33,11 +32,11 @@ class HospitalProfileActivity : BaseActivity() {
     private lateinit var callHelplineButton: Button
     private lateinit var mapDirectionsButton: Button
     private lateinit var doctorsRecyclerView: RecyclerView
-    private lateinit var progressBar: ProgressBar
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        showLoading()
 
         // Find the content frame and inflate the specific layout
         val contentFrame: FrameLayout = findViewById(R.id.content_frame)
@@ -59,41 +58,37 @@ class HospitalProfileActivity : BaseActivity() {
         doctorsRecyclerView = findViewById(R.id.doctor_list)
         doctorsRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        progressBar = findViewById(R.id.progress_bar)
 
         // Get the hospital ID from the intent
         val hospitalId = intent.getIntExtra("hospitalId", -1)
 
         // Fetch hospital details and doctors using coroutines
         if (hospitalId != -1) {
+
             fetchHospitalDetails(hospitalId)
             fetchDoctorsForHospital(hospitalId)
+            hideLoading()
         }
     }
 
     private fun fetchHospitalDetails(hospitalId: Int) {
+
         CoroutineScope(Dispatchers.IO).launch {
             try {
-
-                withContext(Dispatchers.Main) {
-                    progressBar.visibility = View.VISIBLE
-                }
-
                 val response = RetrofitInstance.api.getHospital(hospitalId)
                 withContext(Dispatchers.Main) {
-
                     updateHospitalUI(response)
-                    progressBar.visibility = View.GONE
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
-                // Handle error, show a message to the user, etc.
+                withContext(Dispatchers.Main) {
+                    e.printStackTrace()
+                    // Handle error, show a message to the user
+                }
             }
         }
     }
 
     private fun fetchDoctorsForHospital(hospitalId: Int) {
-
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = RetrofitInstance.api.getDoctors() // Fetch all doctors or adjust endpoint as needed
@@ -102,8 +97,10 @@ class HospitalProfileActivity : BaseActivity() {
                     updateDoctorsRecyclerView(doctors)
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
-                // Handle error, show a message to the user, etc.
+                withContext(Dispatchers.Main) {
+                    e.printStackTrace()
+                    // Handle error, show a message to the user
+                }
             }
         }
     }
@@ -118,8 +115,6 @@ class HospitalProfileActivity : BaseActivity() {
         // Set up the Call Helpline button click listener
         callHelplineButton.setOnClickListener {
             // Handle the call helpline button click here
-
-            // Example: Open a phone dialer to make a call
             val phoneNumber = hospitalDTO.contactNo // Replace with the actual phone number
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:$phoneNumber")
@@ -129,7 +124,6 @@ class HospitalProfileActivity : BaseActivity() {
         // Set up the Get Map Directions button click listener
         mapDirectionsButton.setOnClickListener {
             // Handle the map directions button click here
-            // Example: Open Google Maps with directions
             val mapUri = Uri.parse("https://www.google.com/maps/search/?api=1&query=${hospitalDTO.locationUrl}")
             val mapIntent = Intent(Intent.ACTION_VIEW, mapUri)
             mapIntent.setPackage("com.google.android.apps.maps") // Specify Google Maps package

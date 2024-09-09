@@ -1,19 +1,24 @@
 package com.example.find_a_doctor
-import java.util.*
+
 import BookAppointmentDTO
 import DoctorDTO
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.Typeface
+import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.StyleSpan
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
 import android.widget.Toast
@@ -24,28 +29,19 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.*
 
-class DoctorProfileActivity : AppCompatActivity() {
+class DoctorProfileActivity : BaseActivity() {
 
     private lateinit var scrollView: ScrollView
     private lateinit var tabProfileDetails: TextView
     private lateinit var tabAvailability: TextView
-
     private lateinit var tabReviews: TextView
     private lateinit var tabAbout: TextView
 
-
     private lateinit var profileDetailsSection: View
     private lateinit var availabilitySection: View
-
     private lateinit var reviewsSection: View
     private lateinit var aboutSection: View
-
 
     private lateinit var profileImage: ImageView
     private lateinit var profileNameTextView: TextView
@@ -53,106 +49,80 @@ class DoctorProfileActivity : AppCompatActivity() {
     private lateinit var profileQualificationsTextView: TextView
     private lateinit var profileExperienceTextView: TextView
     private lateinit var profileAboutTextView: TextView
-    private lateinit var availabilityTime:TextView
+    private lateinit var availabilityTime: TextView
 
     private lateinit var buttonCallHelpline: Button
     private lateinit var buttonBookAppointment: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_doctor_profile)
+        // Find the content frame and inflate the specific layout
+        val contentFrame: FrameLayout = findViewById(R.id.content_frame)
+        layoutInflater.inflate(R.layout.activity_doctor_profile, contentFrame, true)
 
         val title = intent.getStringExtra("TITLE") ?: "Doctor Profile"
         setHeaderTitle(title)
 
+        // Initialize views
+        scrollView = findViewById(R.id.scrollView)
+        tabProfileDetails = findViewById(R.id.tabProfileDetails)
+        tabAvailability = findViewById(R.id.tabAvailability)
+        tabReviews = findViewById(R.id.tabReviews)
+        tabAbout = findViewById(R.id.tabAbout)
+
+        profileDetailsSection = findViewById(R.id.profileDetailsSection)
+        availabilitySection = findViewById(R.id.availabilitySection)
+        reviewsSection = findViewById(R.id.reviewsSection)
+        aboutSection = findViewById(R.id.aboutSection)
+
+        profileImage = findViewById(R.id.profileImage)
+        profileNameTextView = findViewById(R.id.profileName)
+        profileSpecialtyTextView = findViewById(R.id.profileSpecialty)
+        profileQualificationsTextView = findViewById(R.id.profileQualifications)
+        profileExperienceTextView = findViewById(R.id.profileExperience)
+        profileAboutTextView = findViewById(R.id.profileDetailsSection1)
+        availabilityTime = findViewById(R.id.availability)
+
+        buttonCallHelpline = findViewById(R.id.button2)
+        buttonBookAppointment = findViewById(R.id.button1)
+
+        // Set click listeners
+        tabProfileDetails.setOnClickListener { onTabClicked(it, profileDetailsSection) }
+        tabAvailability.setOnClickListener { onTabClicked(it, availabilitySection) }
+        tabReviews.setOnClickListener { onTabClicked(it, reviewsSection) }
+        tabAbout.setOnClickListener { onTabClicked(it, aboutSection) }
+
+
+        buttonCallHelpline.setOnClickListener{
+            showHelplineDialog()
+        }
+
+        buttonBookAppointment.setOnClickListener {
+            bookAppointment()
+        }
+
+        // Fetch doctor details if the doctorId is valid
         val doctorId = intent.getIntExtra("doctorId", 0)
         if (doctorId != 0) {
             fetchDoctorDetails(doctorId)
         } else {
             Toast.makeText(this, "Invalid doctor ID", Toast.LENGTH_SHORT).show()
         }
-
-        // Initialize views
-        scrollView = findViewById(R.id.scrollView)
-        Log.d("DoctorProfileActivity", "ScrollView is initialized")
-
-        tabProfileDetails = findViewById(R.id.tabProfileDetails)
-        Log.d("DoctorProfileActivity", "tabProfileDetails is initialized")
-
-        tabAvailability = findViewById(R.id.tabAvailability)
-        Log.d("DoctorProfileActivity", "tabAvailability is initialized")
-
-
-        tabReviews = findViewById(R.id.tabReviews)
-        Log.d("DoctorProfileActivity", "tabReviews is initialized")
-
-        tabAbout = findViewById(R.id.tabAbout)
-        Log.d("DoctorProfileActivity", "tabAbout is initialized")
-
-
-        profileDetailsSection = findViewById(R.id.profileDetailsSection)
-        Log.d("DoctorProfileActivity", "profileDetailsSection is initialized")
-
-        availabilitySection = findViewById(R.id.availabilitySection)
-        Log.d("DoctorProfileActivity", "availabilitySection is initialized")
-
-
-
-        reviewsSection = findViewById(R.id.reviewsSection)
-        Log.d("DoctorProfileActivity", "reviewsSection is initialized")
-
-        aboutSection = findViewById(R.id.aboutSection)
-        Log.d("DoctorProfileActivity", "aboutSection is initialized")
-
-
-        profileImage = findViewById(R.id.profileImage)
-        Log.d("DoctorProfileActivity", "profileImage is initialized")
-
-        profileNameTextView = findViewById(R.id.profileName)
-        Log.d("DoctorProfileActivity", "profileNameTextView is initialized")
-
-        profileSpecialtyTextView = findViewById(R.id.profileSpecialty)
-        Log.d("DoctorProfileActivity", "profileSpecialtyTextView is initialized")
-
-        profileQualificationsTextView = findViewById(R.id.profileQualifications)
-        Log.d("DoctorProfileActivity", "profileQualificationsTextView is initialized")
-
-        profileExperienceTextView = findViewById(R.id.profileExperience)
-        Log.d("DoctorProfileActivity", "profileExperienceTextView is initialized")
-
-        profileAboutTextView = findViewById(R.id.profileDetailsSection1) // This should be changed to a specific TextView if needed
-        Log.d("DoctorProfileActivity", "profileAboutTextView is initialized")
-
-        availabilityTime = findViewById(R.id.availability)
-
-        buttonCallHelpline = findViewById(R.id.button2)
-        Log.d("DoctorProfileActivity", "buttonCallHelpline is initialized")
-
-        buttonBookAppointment = findViewById(R.id.button1)
-        Log.d("DoctorProfileActivity", "buttonBookAppointment is initialized")
-
-        // Set click listeners
-        tabProfileDetails.setOnClickListener { onTabClicked(it, profileDetailsSection) }
-        tabAvailability.setOnClickListener { onTabClicked(it, availabilitySection) }
-
-        tabReviews.setOnClickListener { onTabClicked(it, reviewsSection) }
-        tabAbout.setOnClickListener { onTabClicked(it, aboutSection) }
-
-        buttonBookAppointment.setOnClickListener(){
-            bookAppointment()
-        }
-
     }
 
     private fun fetchDoctorDetails(doctorId: Int) {
+        showLoading() // Show loading indicator while fetching data
+
         CoroutineScope(Dispatchers.IO).launch {
             try {
                 val response = RetrofitInstance.api.getDoctor(doctorId)
                 withContext(Dispatchers.Main) {
                     updateDoctorUI(response)
+                    hideLoading() // Hide loading indicator when data is loaded
                 }
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
+                    hideLoading() // Hide loading indicator in case of an error
                     Toast.makeText(applicationContext, "Failed to load doctor details", Toast.LENGTH_LONG).show()
                 }
             }
@@ -206,16 +176,16 @@ class DoctorProfileActivity : AppCompatActivity() {
         } else {
             buttonBookAppointment.setOnClickListener {
                 bookAppointment()
-                // Start the Doctor Profile Activity and pass the doctor's ID or other necessary data
+                // Start the AppointmentActivity when booking an appointment
                 val intent = Intent(this, AppointmentActivity::class.java)
                 intent.putExtra("TITLE", "Appointments")
                 startActivity(intent)
             }
         }
     }
-    fun bookAppointment() {
-         val appointmentTime = findViewById<TextView>(R.id.availability).text.toString()
-        // Proceed with using formattedAppointmentTime for your booking DTO
+
+    private fun bookAppointment() {
+        val appointmentTime = findViewById<TextView>(R.id.availability).text.toString()
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
             val userId = currentUser.uid
@@ -235,7 +205,7 @@ class DoctorProfileActivity : AppCompatActivity() {
                     }
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(applicationContext, "Network error: Failed to connect ${e.message} ", Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext, "Network error: ${e.message}", Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -243,7 +213,6 @@ class DoctorProfileActivity : AppCompatActivity() {
             Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun onTabClicked(clickedTab: View, section: View) {
         // Reset all tabs to default style
@@ -272,18 +241,49 @@ class DoctorProfileActivity : AppCompatActivity() {
         tabAvailability.backgroundTintList = defaultTintList
         tabAvailability.setTextColor(defaultTextColor)
 
-
-
         tabReviews.backgroundTintList = defaultTintList
         tabReviews.setTextColor(defaultTextColor)
 
         tabAbout.backgroundTintList = defaultTintList
         tabAbout.setTextColor(defaultTextColor)
-
-
     }
 
-    private fun setHeaderTitle(title: String) {
-        // Set the header title (implement as needed)
+
+
+    private fun showHelplineDialog() {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_helpline, null)
+        val builder = AlertDialog.Builder(this, R.style.CustomDialogTheme)
+            .setView(dialogView)
+            .setCancelable(true)
+
+        val dialog = builder.create()
+        dialog.show()
+
+        val callLayout1 = dialogView.findViewById<LinearLayout>(R.id.call_layout_1)
+        val callLayout2 = dialogView.findViewById<LinearLayout>(R.id.call_layout_2)
+        val number1TextView = dialogView.findViewById<TextView>(R.id.number_1)
+        val number2TextView = dialogView.findViewById<TextView>(R.id.number_2)
+
+        callLayout1.setOnClickListener {
+            val phoneNumber1 = number1TextView.text.toString()
+            makePhoneCall(phoneNumber1)
+        }
+
+        callLayout2.setOnClickListener {
+            val phoneNumber2 = number2TextView.text.toString()
+            makePhoneCall(phoneNumber2)
+        }
+
+        val closeButton: ImageView? = dialog.findViewById(R.id.close_button)
+        closeButton?.setOnClickListener {
+            dialog.dismiss()
+        }
+    }
+    private fun makePhoneCall(phoneNumber: String) {
+        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:$phoneNumber"))
+        startActivity(intent)
+    }
+    override fun customizeHeader() {
+        // Customize Header
     }
 }

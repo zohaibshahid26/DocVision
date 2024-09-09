@@ -1,44 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+ />
+
 
     <item
         android:id="@+id/nav_home"
         android:title="Home"
-        android:icon="@drawable/home"/>
-    <item
-        android:id="@+id/nav_profile"
-        android:title="My Profile"
-        android:icon="@drawable/user"/>
+        android:icon="@drawable/home" />
 
     <item
         android:id="@+id/nav_appointment"
         android:title="Your Appointments"
-        android:icon="@drawable/appointment_book"/>
+        android:icon="@drawable/appointment_book" />
 
     <item
         android:id="@+id/nav_search_doctor"
         android:title="Search Doctor"
-        android:icon="@drawable/search"/>
+        android:icon="@drawable/search" />
 
     <item
         android:id="@+id/nav_search_hospital"
         android:title="View Hospitals"
-        android:icon="@drawable/hospital"/>
+        android:icon="@drawable/hospital" />
 
-    <item
-        android:id="@+id/contact_us"
-        android:title="Contact Us"
-        android:icon="@drawable/contact_us"/>
 
     <item
         android:id="@+id/settings"
         android:title="Delete Account"
         android:iconTint="@android:color/holo_red_light"
-
         android:icon="@drawable/settings"/>
 
     <item
         android:id="@+id/logout_button"
         android:title="Log out"
         android:icon="@drawable/logout"/>
+
 </menu>

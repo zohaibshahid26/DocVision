@@ -15,7 +15,6 @@ class ContactUsActivity : BaseActivity() {
         val title = intent.getStringExtra("TITLE") ?: "Contact Us"
         setHeaderTitle(title)
 
-
     }
 
     override fun customizeHeader() {
