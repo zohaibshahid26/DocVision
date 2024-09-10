@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingTop="16dp"
     android:paddingHorizontal="0dp">
 
@@ -110,13 +111,28 @@
                 android:gravity="center"
                 android:layout_marginBottom="8dp">
 
-                <ImageView
-                    android:id="@+id/profileImage"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginEnd="8dp"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_avatar" />
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/hospital_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginEnd="16dp"
+
+                    app:cardCornerRadius="80dp"
+                    app:cardElevation="4dp">
+
+                    <ImageView
+                        android:id="@+id/profileImage"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/doctor"
+                        android:clipToOutline="true"
+
+                        />
+
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/profileName"

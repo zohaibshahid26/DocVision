@@ -13,9 +13,6 @@
         android:indeterminate="true"
         />
 
-
-
-
     <!-- Header Layout -->
     <include
         layout="@layout/custom_header" />
