@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.SpannableString
 import android.text.Spanned
 import android.text.style.StyleSpan
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.FrameLayout
@@ -68,35 +69,48 @@ class AppointmentActivity : BaseActivity() {
             try {
                 val user = FirebaseAuth.getInstance().currentUser
                 if (user != null) {
-                    val userId = user!!.uid
+                    val userId = user.uid
+                    Log.d("UserId", "User ID: $userId")
+
                     // Fetch appointments for the current user
                     val response = RetrofitInstance.api.getAppointmentsByPatient(userId)
 
-                    // filter appointments by status
-                    val filteredAppointments = response.filter { it.status }
-
                     withContext(Dispatchers.Main) {
-                        appointmentAdapter.updateData(filteredAppointments)
+                        // Show response for debugging
+//                        Toast.makeText(applicationContext, response.toString(), Toast.LENGTH_LONG).show()
+                        Log.d("Appointments", "Response: $response")
 
-                        if(filteredAppointments.isEmpty()){
+                        if (response.isEmpty()) {
+                            Log.d("Appointments", "No appointments found")
                             showNoContent("No Appointments Found", "Explore Doctors", false)
-                        }
+                        } else {
+                            Log.d("Appointments", "Appointments found")
 
-                        else{
-                            hideNoContent()
-                        }
+                            // Filter appointments by status
+                            val filteredAppointments = response.filter { it.status }
 
-                        hideLoading()  // Hide progress bar
+                            appointmentAdapter.updateData(filteredAppointments)
+
+                            if (filteredAppointments.isEmpty()) {
+                                showNoContent("No Appointments Found", "Explore Doctors", false)
+                            } else {
+                                hideNoContent()
+                            }
+
+                            hideLoading()  // Hide progress bar
+                        }
                     }
                 }
-
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
-                    Toast.makeText(applicationContext, "Failed to load Appointment details", Toast.LENGTH_LONG).show()
+//                    Toast.makeText(applicationContext, "Failed to load Appointment details", Toast.LENGTH_LONG).show()
+//                    Log.e("Error", "Exception: ${e.message}", e)  // Log exception details for debugging
 
-                }
+                    hideLoading()  // Hide progress bar in case of an error
+                    showNoContent("No Appointments Found", "Explore Doctors", false)                }
             }
         }
+
     }
 
     override fun customizeHeader() {
